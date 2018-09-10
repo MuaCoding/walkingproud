@@ -1,0 +1,155 @@
+user-activity-list {
+  > ion-list.list {
+    > .item-block {
+      padding: $content-gutter;
+
+      &:first-child {
+        border-top: none;
+      }
+
+      &:last-child {
+        border-bottom: none;
+      }
+
+      & + .item {
+        margin-top: -$content-gutter;
+      }
+
+      > .item-inner {
+        overflow: unset;
+        padding: 0;
+        border: $hairlines-width solid color($border, light) !important;
+        background-color: #fff;
+        border-radius: 3px;
+
+        > .input-wrapper {
+          overflow: unset;
+        }
+      }
+
+      .label {
+        overflow: unset;
+        margin: 0;
+        font-size: 1.4rem;
+
+        > .image {
+          position: relative;
+          padding-top: 37.5%;
+
+          > div {
+            @extend %fullBlock;
+
+            > img {
+              width: 100%;
+            }
+          }
+
+          > div.mask {
+            z-index: 2;
+            background: linear-gradient(transparent, rgba(#000,.6));
+
+            > header {
+              @extend %detail-push;
+
+              position: absolute;
+              bottom: 0;
+              left: 0;
+              right: 0;
+              margin: $content-gutter;
+              color: #fff;
+
+              > h1 {
+                @extend %textOverflow;
+
+                font-size: 1.5rem;
+                font-weight: bold;
+              }
+            }
+          }
+
+          > .tag {
+            position: absolute;
+            z-index: 3;
+            top: $content-gutter;
+            left: -3px;
+            padding: 5px 10px;
+            background-color: color($colors, primary);
+            font-size: 1.2rem;
+            color: #fff;
+
+            &.status-1 {
+              background-color: #85c226;
+            }
+
+            &.status-2 {
+              background-color: #d9261c;
+            }
+
+            &.status-3 {
+              background-color: #7b7b7b;
+            }
+
+            ion-icon {
+              width: 1em;
+              margin-left: -.2em;
+              margin-right: 5px;
+              text-align: center;
+              transform: scale(1.2);
+            }
+          }
+        }
+
+        > .info {
+          padding: $content-gutter;
+
+          > div {
+            display: flex;
+            font-size: 1.3rem;
+            align-items: center;
+
+            & + div {
+              margin-top: .5em;
+            }
+
+            > label {
+              margin-right: 1em;
+            }
+
+            > div {
+              display: flex;
+              flex: 1;
+              justify-content: flex-end;
+            }
+
+            > my-progress {
+              flex: 1;
+              margin-bottom: -.5em;
+            }
+          }
+        }
+
+        > .tips {
+          display: block;
+          padding: $content-gutter;
+          color: color($text, light);
+        }
+
+        .buttons {
+          display: flex;
+          border-top: $hairlines-width solid color($border, light);
+
+          > button {
+            flex: 1;
+            height: 3.2em;
+            padding: 0 1em;
+            font-size: inherit;
+
+            & + button {
+              border-left: $hairlines-width solid color($border, light);
+            }
+          }
+        }
+      }
+    }
+  }
+}

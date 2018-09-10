@@ -1,0 +1,12 @@
+page-registration-state {
+  > ion-content.content {
+    background-color: #fff;
+
+    empty-state {
+      ion-icon {
+        font-size: 8rem;
+        color: #69bf0c;
+      }
+    }
+  }
+}

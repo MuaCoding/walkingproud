@@ -1,0 +1,534 @@
+// http://ionicframework.com/docs/theming/
+
+
+// App Global Sass
+// --------------------------------------------------
+// Put style rules here that you want to apply globally. These
+// styles are for the entire app and not just one component.
+// Additionally, this file can be also used as an entry point
+// to import other Sass files to be included in the output CSS.
+//
+// Shared Sass variables, which can be used to adjust Ionic's
+// default Sass variables, belong in "theme/variables.scss".
+//
+// To declare rules for a specific mode, create a child rule
+// for the .md, .ios, or .wp mode classes. The mode class is
+// automatically applied to the <body> element in the app.
+
+body {
+  position: static;
+}
+
+@mixin linesClamp($line: 2, $lineHeight: 1.4em) {
+  display: -webkit-box;
+  overflow: hidden;
+  max-height: $line * $lineHeight;
+  line-height: $lineHeight;
+  text-overflow: ellipsis;
+  white-space: normal;
+  -webkit-line-clamp: $line;
+  -webkit-box-orient: vertical;
+}
+
+%textOverflow {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+%fullBlock {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+%blockCenter {
+  display: flex;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+
+  > div {
+    display: block;
+  }
+}
+
+%detail-push {
+  @include svg-background-image($item-ios-detail-push-svg, true);
+  @include background-position(end, 0, center);
+
+  background-repeat: no-repeat;
+  background-size: 14px 14px;
+}
+
+ion-app.app-root {
+  font-family: "PingFang SC", "Helvetica Neue", Helvetica, Arial, "Microsoft YaHei", STHeitiSC-Light, simsun, sans-serif;
+
+  h1, h2, h3, h4, h5, h6 {
+    font-weight: normal;
+  }
+
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  b, strong, i, em {
+    font-style: normal;
+  }
+
+  b, strong {
+    color: color($colors, primary);
+  }
+
+  em + em:before {
+    margin: 0 3px;
+    content: "·";
+  }
+
+  img {
+    object-fit: cover;
+  }
+
+  ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  [margin-top-half] {
+    margin-top: $content-gutter-half;
+  }
+
+  section {
+    overflow: hidden;
+    background-color: #fff;
+
+    &[no-background] {
+      background-color: transparent;
+    }
+
+    &[border] {
+      border: solid color($border, normal);
+      border-width: $hairlines-width 0;
+
+      &:first-child {
+        margin-top: -1px;
+      }
+    }
+
+    &[box-shadow] {
+      z-index: 99;
+      box-shadow: 0 0 5px rgba(#000, 0.05);
+    }
+  }
+
+  ion-icon {
+    font-size: 1em;
+  }
+
+  ion-header {
+    box-shadow: 0 0 5px rgba(#000, 0.05);
+  }
+
+  ion-tabs.hide-tabbar {
+    > .tabbar {
+      display: none;
+    }
+  }
+
+  ion-content.has-refresher {
+    > .scroll-content {
+      border-top: none;
+    }
+  }
+
+  .toolbar {
+    .bar-button {
+      ion-icon.icon {
+        font-size: 1.2em;
+
+        &.back-button-icon {
+          font-size: 1.4em;
+        }
+      }
+
+      &.back-button {
+        display: inline-block;
+      }
+
+      &[icon-only] {
+        ion-icon.icon {
+          font-size: 1.6em;
+        }
+      }
+    }
+  }
+
+  .transparent {
+    position: absolute;
+    box-shadow: unset;
+
+    .toolbar-background {
+      border: none;
+      background: none;
+    }
+
+    .toolbar-title, .bar-button {
+      color: #fff;
+    }
+  }
+
+  ion-datetime {
+    @extend %detail-push;
+
+    flex: 1;
+    position: relative;
+    background-size: 12px 12px;
+
+    [class$="-text"], [class$="-placeholder"] {
+      height: 20px;
+      line-height: 20px;
+    }
+
+    [class$="-placeholder"] {
+      color: $text-input-placeholder-color;
+    }
+  }
+
+  .item-label-stacked {
+    ion-datetime {
+      @include padding(8px, null, 8px, 0);
+    }
+  }
+
+  ion-multi-picker {
+    @extend ion-datetime;
+  }
+
+  .picker-toolbar-multi-picker-cancel {
+    text-align: start;
+  }
+
+  [fixed-scroll].fixed {
+    position: fixed;
+    z-index: 10;
+    top: 0;
+    left: 0;
+    right: 0;
+    transform: translateY(100%);
+  }
+
+  ion-list.list {
+    margin: 0;
+  }
+
+  form {
+    ion-list.list {
+      > .item {
+        font-size: 1.4rem;
+
+        &:first-child {
+          border-top: none;
+        }
+
+        &.list-header {
+          background-color: $background-color;
+          font-size: 1.2rem;
+          color: color($text, light);
+
+          .label {
+            margin-bottom: $content-gutter-half;
+            letter-spacing: 0;
+          }
+        }
+
+        &.item-label-stacked {
+          .label {
+            flex: initial;
+            margin-bottom: 0;
+          }
+        }
+
+        [item-content] {
+          flex: 1;
+          display: flex;
+          width: 100%;
+          align-items: center;
+        }
+      }
+    }
+
+    &.submitted {
+      ion-list.list {
+        $danger: lighten(color($colors, danger), 10%);
+
+        > .item.ng-invalid {
+          color: $danger;
+
+          > .item-inner {
+            border-color: $danger;
+          }
+        }
+      }
+    }
+  }
+
+  .formTips {
+    padding: $content-gutter;
+    font-size: 1.3rem;
+    color: color($text, light);
+
+    > ul {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+
+      > li {
+        line-height: 1.8em;
+
+        &:before {
+          content: "·";
+          margin-right: 5px;
+        }
+      }
+    }
+  }
+}
+
+// 自定义提示框
+ion-alert.wp-alert {
+  > .alert-wrapper {
+    max-width: 300px;
+    background-color: #fff;
+    border-radius: 5px;
+
+    > .alert-head {
+      padding: $content-gutter $content-gutter-double;
+      padding-bottom: $content-gutter-half / 2;
+
+      > .alert-title {
+        font-size: 1.5rem;
+      }
+    }
+
+    > .alert-message {
+      padding: $content-gutter $content-gutter-double;
+      padding-top: 0;
+      font-size: 1.3rem;
+    }
+
+    > .alert-button-group {
+      border-color: color($border, light);
+
+      > button {
+        border-color: color($border, light);
+        font-size: 1.4rem;
+        color: color($text, light);
+
+        &:last-child {
+          color: color($colors, secondary);
+        }
+      }
+    }
+  }
+
+  &.icon {
+    > .alert-wrapper {
+      min-width: 270px;
+
+      > .alert-head {
+        display: flex;
+        flex-direction: column;
+
+        > .alert-title {
+          order: 2;
+        }
+
+        > .alert-sub-title {
+          margin: 0;
+          font-size: 4.2rem;
+          line-height: 1;
+          color: color($colors, secondary);
+          order: 1;
+        }
+      }
+    }
+  }
+
+  &.qrcode {
+    > .alert-wrapper {
+      > .alert-message {
+        max-height: 280px;
+        padding-top: $content-gutter;
+
+        > img {
+          display: block;
+          width: 230px;
+          height: 230px;
+        }
+      }
+    }
+  }
+}
+
+// 自定义模态框
+ion-modal.small-modal {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  > ion-backdrop {
+    background-color: color($colors, dark);
+    visibility: visible;
+  }
+
+  > .modal-wrapper {
+    position: relative;
+    z-index: 3;
+    overflow: hidden;
+    width: 80vw;
+    min-width: 300px;
+    height: auto;
+    background-color: #fff;
+    border-radius: 3px;
+    contain: content;
+
+    > .ion-page {
+      position: relative;
+      contain: content;
+
+      > header {
+        > ion-toolbar.toolbar {
+          min-height: auto;
+          margin-bottom: -$content-gutter;
+          padding: $content-gutter;
+
+          > .toolbar-content {
+            > ion-title.title {
+              position: relative;
+              padding: 0;
+
+              > .toolbar-title {
+                font-weight: bold;
+                font-size: 1.5rem;
+              }
+            }
+          }
+
+          > ion-buttons {
+            margin: 0;
+          }
+        }
+      }
+
+      > footer {
+        > ion-toolbar.toolbar {
+          padding: 0;
+
+          > .toolbar-background {
+            border-top: $hairlines-width solid color($border, light);
+          }
+
+          > .toolbar-content {
+            display: flex;
+
+            > button {
+              margin: 0;
+              height: 44px;
+              font-size: 1.4rem;
+
+              & + button {
+                border-left: $hairlines-width solid color($border, light);
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+// 底部模态框
+ion-modal.bottom-modal {
+  position: relative;
+
+  > ion-backdrop {
+    background-color: color($colors, dark);
+    visibility: visible;
+  }
+
+  > .modal-wrapper {
+    position: absolute;
+    z-index: 3;
+    top: unset;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: auto;
+    border-radius: 0;
+    contain: content;
+
+    > .ion-page {
+      position: relative;
+      overflow: hidden;
+      background-color: #fff;
+      contain: content;
+
+      > header {
+        > ion-toolbar.toolbar {
+          padding: 0 $content-gutter;
+
+          > .toolbar-background {
+            border-bottom: $hairlines-width solid color($border, normal);
+          }
+
+          > ion-buttons {
+            margin: 0;
+
+            .icon {
+              font-size: 1.8em;
+            }
+          }
+
+          > .toolbar-content {
+            margin-right: 1em;
+
+            > ion-title.title {
+              position: relative;
+              padding: 0;
+
+              > .toolbar-title {
+                text-align: start;
+              }
+            }
+          }
+        }
+      }
+
+      > section {
+        overflow-x: hidden;
+        overflow-y: auto;
+        max-height: calc(60vh - 88px);
+      }
+
+      > footer {
+        > ion-toolbar.toolbar {
+          padding: 0;
+
+          > .toolbar-content {
+            display: flex;
+
+            > button {
+              flex: 1;
+              height: 44px;
+              font-size: inherit;
+            }
+          }
+        }
+      }
+    }
+  }
+}

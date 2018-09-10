@@ -1,0 +1,9 @@
+<ng-container *ngIf="result?.data">
+  <donation-list [data]="result.data"></donation-list>
+
+  <load-more (loadMore)="doLoadMore($event)" *ngIf="result?.more"></load-more>
+</ng-container>
+
+<empty-state [completed]="result?.completed" middle *ngIf="!result?.data">
+  <p>没有相关的捐赠记录</p>
+</empty-state>

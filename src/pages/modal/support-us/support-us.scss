@@ -1,0 +1,23 @@
+page-support-us {
+  > section {
+    max-height: 450px !important;
+  }
+
+  > section > ion-list.list {
+    > .list-header {
+      min-height: auto;
+      border-bottom: none;
+
+      .label {
+        margin-bottom: 0;
+        font-weight: bold;
+        font-size: 1.4rem;
+        letter-spacing: 0;
+      }
+    }
+
+    > member-list {
+      border-bottom: $hairlines-width solid color($border, light);
+    }
+  }
+}

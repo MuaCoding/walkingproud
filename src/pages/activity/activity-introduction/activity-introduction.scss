@@ -1,0 +1,34 @@
+page-activity-introduction {
+  > ion-content.content {
+    ion-toolbar.toolbar {
+      padding: 0;
+
+      > .toolbar-background {
+        background-color: transparent;
+      }
+
+      &.fixed {
+        > .toolbar-background {
+          background-color: #fff;
+          border-bottom: $hairlines-width solid color($border, normal);
+        }
+      }
+    }
+
+    section {
+      min-height: calc(100% - 44px);
+    }
+
+    section .content {
+      padding: $content-gutter;
+      font-size: 1.4rem;
+      line-height: 1.6em;
+
+      > p {
+        &:first-child {
+          margin-top: 0;
+        }
+      }
+    }
+  }
+}

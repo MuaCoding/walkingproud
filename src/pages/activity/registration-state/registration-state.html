@@ -1,0 +1,19 @@
+<ion-header>
+
+  <ion-navbar hideBackButton>
+    <ion-title>报名结果</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+
+  <empty-state completed>
+    <ion-icon name="wp-success" image></ion-icon>
+    <h2>您已成为参赛者</h2>
+    <p>加入队伍并达成目标后才能参加比赛</p>
+    <button ion-button color="secondary" (click)="gotoTeamList()">前往队伍列表</button>
+  </empty-state>
+
+</ion-content>

@@ -1,0 +1,35 @@
+user-avatar {
+  display: inline-block;
+  position: relative;
+
+  > img.image {
+    display: block;
+    width: $item-ios-avatar-size + 2px;
+    height: $item-ios-avatar-size + 2px;
+    border: $hairlines-width solid color($border, light);
+    border-radius: 50%;
+  }
+
+  > span.sex {
+    display: flex;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 16px;
+    height: 16px;
+    background-color: #000;
+    font-size: 1rem;
+    color: #fff;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+
+    &.male {
+      background-color: #1070ff;
+    }
+
+    &.female {
+      background-color: #f03888;
+    }
+  }
+}

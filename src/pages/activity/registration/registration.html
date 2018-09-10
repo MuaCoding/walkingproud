@@ -1,0 +1,22 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>成为参赛者</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+
+  <ng-container *ngIf="info">
+
+    <section>
+      <participant-info [data]="info" button="成为参赛者" (process)="process($event)"></participant-info>
+    </section>
+
+  </ng-container>
+
+  <empty-state [completed]="completed" *ngIf="!info"></empty-state>
+
+</ion-content>

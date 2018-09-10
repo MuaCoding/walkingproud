@@ -1,0 +1,66 @@
+slide-tabs {
+  display: block;
+
+  > ion-segment.segment {
+    > .segment-button {
+      overflow: unset;
+      max-width: 120px;
+      border: none;
+      color: $text-color;
+
+      > strong {
+        font-weight: normal;
+        color: inherit;
+      }
+
+      &:hover:not(.segment-activated) {
+        background: none;
+      }
+
+      &.segment-activated {
+        color: color($colors, primary);
+        background: none;
+
+        &:after {
+          position: absolute;
+          left: 50%;
+          bottom: -9px;
+          width: 16px;
+          height: 2px;
+          background-color: color($colors, primary);
+          content: "";
+          transform: translate3d(-50%, 0, 0);
+        }
+      }
+    }
+  }
+}
+
+ion-toolbar.slide-tabs {
+  > .toolbar-background {
+    border-bottom: $hairlines-width solid color($border, normal);
+  }
+}
+
+.toolbar + ion-toolbar.slide-tabs {
+  margin-top: -8px;
+}
+
+ion-slides.slide-tabs {
+  > .swiper-container {
+    > .swiper-wrapper {
+      > .swiper-slide {
+        display: block;
+
+        > .slide-zoom {
+          text-align: start;
+          height: 100%;
+
+          ion-scroll {
+            height: 100%;
+          }
+        }
+      }
+    }
+  }
+}

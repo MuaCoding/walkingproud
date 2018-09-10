@@ -1,0 +1,37 @@
+<ion-toolbar margin-top-half>
+  <slide-tabs [slides]="slides" *ngIf="slides?.container"></slide-tabs>
+</ion-toolbar>
+
+<ion-slides #slides class="slide-tabs" auto-height>
+
+  <ion-slide title="个人捐款">
+    <ng-container *ngIf="ranking?.person">
+      <ranking [data]="ranking?.person"></ranking>
+    </ng-container>
+
+    <empty-state [completed]="completed" middle *ngIf="!ranking?.person">
+      <p>暂无个人捐赠数据</p>
+    </empty-state>
+  </ion-slide>
+
+  <ion-slide title="队伍募款">
+    <ng-container *ngIf="ranking?.team">
+      <ranking [data]="ranking?.team"></ranking>
+    </ng-container>
+
+    <empty-state [completed]="completed" middle *ngIf="!ranking?.team">
+      <p>暂无队伍募款数据</p>
+    </empty-state>
+  </ion-slide>
+
+  <!-- <ion-slide title="团体募款">
+    <ng-container *ngIf="ranking?.group">
+      <ranking [data]="ranking?.group"></ranking>
+    </ng-container>
+
+    <empty-state [completed]="completed" middle *ngIf="!ranking?.group">
+      <p>暂无团体募款数据</p>
+    </empty-state>
+  </ion-slide> -->
+
+</ion-slides>

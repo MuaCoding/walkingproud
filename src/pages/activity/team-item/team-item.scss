@@ -1,0 +1,248 @@
+page-team-item {
+  > ion-header.header {
+    > .toolbar {
+      > .toolbar-background {
+        transition: background-color 0.3s;
+      }
+    }
+  }
+
+  > ion-content.content {
+    > .scroll-content {
+      margin-top: 0 !important;
+    }
+
+    section[border-bottom] {
+      margin-bottom: -1px;
+      border-bottom: $hairlines-width solid color($border, normal);
+    }
+
+    section > .top {
+      position: relative;
+      height: 160px;
+      margin-bottom: 35px;
+
+      > .cover {
+        overflow: hidden;
+        width: 100%;
+        height: 100%;
+
+        > .background {
+          width: 100%;
+          height: 100%;
+          background: #eee no-repeat center center;
+          background-size: cover;
+          transform: scale(1.2);
+          filter: blur(10px);
+        }
+
+        > .mask {
+          @extend %fullBlock;
+
+          background: linear-gradient(rgba(#000, 0.5), transparent);
+          opacity: .3;
+        }
+      }
+
+      > .avatar {
+        display: block;
+        position: absolute;
+        overflow: hidden;
+        left: $content-gutter;
+        bottom: 0;
+        z-index: 2;
+        width: 85px;
+        height: 85px;
+        border: 3px solid rgba(color($border, light), 0.6);
+        border-radius: 50%;
+        transform: translate3d(0, 35px, 0);
+
+        > img {
+          width: 100%;
+          height: 100%;
+        }
+      }
+
+      > .qrcode {
+        display: flex;
+        position: absolute;
+        right: $content-gutter;
+        bottom: 0;
+        z-index: 2;
+        width: 35px;
+        height: 35px;
+        align-items: center;
+        justify-content: center;
+        transform: translate3d(0, 35px, 0);
+
+        > a {
+          display: block;
+          font-size: 2.5rem;
+          line-height: 1;
+        }
+      }
+    }
+
+    section > .info {
+      > h2 {
+        margin: 0;
+        font-weight: bold;
+        font-size: 1.6rem;
+      }
+
+      > p {
+        margin: 0;
+        margin-top: .5em;
+        font-size: 1.3rem;
+        color: color($text, light);
+      }
+
+      > .tag {
+        display: flex;
+        margin-top: .8em;
+
+        > span {
+          display: block;
+          padding: 0 .6em;
+          background-color: color($colors, primary);
+          font-size: 1.2rem;
+          line-height: 2em;
+          color: #fff;
+          border-radius: 2px;
+
+          & + span {
+            margin-left: .8em;
+          }
+
+          &.mark {
+            background-color: #40c5aa;
+          }
+        }
+      }
+
+      > .money {
+        margin-top: 1em;
+
+        > .flex {
+          display: flex;
+          margin-top: .5em;
+          align-items: center;
+
+          > div {
+            flex: 1;
+            font-size: 1.2rem;
+
+            &:last-child {
+              text-align: right;
+            }
+
+            > p {
+              margin: 0;
+
+              > strong {
+                font-size: 1.5rem;
+                color: inherit;
+              }
+            }
+
+            > span {
+              color: color($text, light);
+            }
+          }
+        }
+      }
+
+      > .registration {
+        display: block;
+        margin-top: $content-gutter-half;
+        margin-bottom: -$content-gutter-half;
+        text-align: center;
+        line-height: 1;
+
+        > button {
+          font-size: 1.3rem;
+
+          .icon {
+            margin-left: 5px;
+          }
+        }
+      }
+    }
+
+    section > .sponsor {
+      position: relative;
+      height: 0;
+      padding-top: 15%;
+      background-color: #ddd;
+
+      > div {
+        @extend %fullBlock;
+
+        > img {
+          display: block;
+          width: 100%;
+          height: 100%;
+        }
+      }
+    }
+
+    section > .toolbar {
+      slide-tabs {
+        > ion-segment.segment {
+          > .segment-button {
+            &.segment-activated {
+              color: color($colors, secondary);
+
+              &:after {
+                background-color: color($colors, secondary);
+              }
+            }
+          }
+        }
+      }
+    }
+
+    section .project {
+      > h2 {
+        margin: 0;
+        margin-top: $content-gutter;
+        padding: $content-gutter;
+        font-weight: bold;
+        font-size: 1.6rem;
+        text-align: center;
+      }
+
+      > .content {
+        padding: $content-gutter;
+        font-size: 1.4rem;
+        line-height: 1.6em;
+
+        > p {
+          &:first-child {
+            margin-top: 0;
+          }
+        }
+      }
+    }
+  }
+
+  ion-footer.footer {
+    > ion-toolbar.toolbar {
+      padding: 0;
+
+      .toolbar-content {
+        display: flex;
+
+        > button {
+          flex: 1;
+          height: 44px;
+          font-size: inherit;
+
+          & + button {
+            border-left: $hairlines-width solid color($border, light);
+          }
+        }
+      }
+    }
+  }
+}

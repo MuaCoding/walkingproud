@@ -1,0 +1,80 @@
+empty-state {
+  @extend %blockCenter;
+
+  width: 100%;
+  height: 100%;
+  padding: $content-gutter;
+
+  > div {
+    max-width: 100%;
+
+    > .image {
+      @extend %blockCenter;
+
+      > [image] {
+        & + img {
+          display: none;
+        }
+      }
+
+      & + h2 {
+        margin-top: 1em;
+      }
+
+      & + p {
+        margin-top: .8em;
+      }
+    }
+
+    > h2 {
+      margin: 0;
+      font-weight: 300;
+      font-size: 1.8rem;
+
+      & + p {
+        margin-top: .8em;
+      }
+
+      & + button.button {
+        margin-top: 1.5em;
+      }
+    }
+
+    > p {
+      margin: 0;
+      font-weight: 300;
+      font-size: 1.2rem;
+      color: color($text, normal);
+
+      & + button.button {
+        margin-top: 1.5em;
+      }
+    }
+
+    > button.button {
+      margin: 0;
+      padding: 0 3rem;
+      font-size: 1.4rem;
+    }
+  }
+
+  &:not([middle]) {
+    padding-bottom: 10%;
+  }
+
+  &[text-only] {
+    > div {
+      > .image {
+        display: none;
+
+        & + h2 {
+          margin-top: 0;
+        }
+
+        & + p {
+          margin-top: 0;
+        }
+      }
+    }
+  }
+}

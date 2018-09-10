@@ -1,0 +1,18 @@
+<ion-list>
+
+  <ion-item [class.active]="selected==item" (click)="onClick(item)" *ngFor="let item of data; trackBy: trackByFn;">
+    <user-avatar item-start [picture]="item.picture" [sex]="item.sex"></user-avatar>
+    <h2>
+      <em>{{item.name}}</em>
+      <span *ngIf="item.identity==0||item.identity==1">队员</span>
+      <span class="captain" *ngIf="item.identity==2">队长</span>
+    </h2>
+    <p *ngIf="item.money>=0">已筹款<strong>{{item.money | number:'0.0-2'}}</strong>元</p>
+    <p *ngIf="item.area"><em>{{item.area.province.name}}</em><em>{{item.area.city.name}}</em><em>{{item.area.district.name}}</em></p>
+    <p *ngIf="item.created_at"><time>{{item.created_at | date:"yyyy-MM-dd HH:mm:ss"}}</time></p>
+    <ion-note item-end *ngIf="item.fee">￥{{item.fee | number:'0.2-2'}}</ion-note>
+    <div class="point" item-end *ngIf="choice"></div>
+    <ng-container [ngTemplateOutlet]="itemEnd" [ngTemplateOutletContext]="{item:item}" item-end></ng-container>
+  </ion-item>
+
+</ion-list>

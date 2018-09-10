@@ -1,0 +1,8 @@
+<ion-list>
+
+  <a ion-item navPush="article" [navParams]="{type:articleType,id:item.id}" *ngFor="let item of data; trackBy: trackByFn;">
+    <h2>{{item.title}}</h2>
+    <p><time>{{item.created_at | date:'yyyy-MM-dd HH:mm'}}</time></p>
+  </a>
+
+</ion-list>

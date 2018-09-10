@@ -1,0 +1,23 @@
+<ion-list>
+
+  <div *ngFor="let item of data; trackBy: trackByFn;">
+    <ion-list-header>{{item.created_at | date:'yyyy年MM月dd日 HH:mm'}}</ion-list-header>
+
+    <ion-item>
+      <ion-avatar item-start>
+        <img [my-src]="item.team.picture" err-src="../assets/imgs/df-logo.jpg">
+      </ion-avatar>
+      <h2>{{item.team.name}}</h2>
+      <p>{{item.team.slogan}}</p>
+      <p>邀请你参加<strong>{{item.activity.name}}</strong></p>
+      <div class="buttons" *ngIf="item.status==0">
+        <button ion-button outline color="light" (click)="refuse(item)">拒绝邀请</button>
+        <button ion-button outline color="secondary" (click)="agree(item)">同意邀请</button>
+      </div>
+      <ion-note *ngIf="item.status==1" item-end>已同意</ion-note>
+      <ion-note *ngIf="item.status==2" item-end>已拒绝</ion-note>
+    </ion-item>
+  </div>
+
+
+</ion-list>

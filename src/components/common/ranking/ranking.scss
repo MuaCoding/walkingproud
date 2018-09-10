@@ -1,0 +1,30 @@
+ranking {
+  > ion-list.list {
+    > .item-block {
+      font-size: 1.4rem;
+
+      &:nth-child(2n){
+        background-color: color($colors, light);
+      }
+
+      ion-avatar {
+        $avatar-size: 36px;
+
+        min-width: $avatar-size;
+        min-height: $avatar-size;
+        margin: 12px 0;
+        margin-right: $content-gutter-half;
+
+        img {
+          width: $avatar-size;
+          height: $avatar-size;
+          border: $hairlines-width solid color($border, light);
+        }
+      }
+
+      h2 {
+        font-size: inherit;
+      }
+    }
+  }
+}

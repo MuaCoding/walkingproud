@@ -1,0 +1,21 @@
+page-activity-protocol {
+  > ion-content.content {
+    section > div.content {
+      line-height: 1.6em;
+
+      p {
+        &:first-child {
+          margin-top: 0;
+        }
+      }
+    }
+  }
+
+  > ion-footer.footer {
+    > ion-toolbar.toolbar {
+      button.button {
+        border-radius: $button-ios-border-radius;
+      }
+    }
+  }
+}

@@ -1,0 +1,25 @@
+<ion-list>
+
+  <ion-item navPush="team-item" [navParams]="{id:item.id}" *ngFor="let item of data; trackBy: trackByFn;">
+    <ion-avatar item-end>
+      <img [my-src]="item.picture" err-src="../assets/imgs/df-logo.jpg">
+      <ion-icon class="crwon" name="wp-crown" [attr.rank]="item.rank" *ngIf="item.rank<=5"></ion-icon>
+    </ion-avatar>
+    <h2>{{item.name}}</h2>
+    <p>{{item.slogan}}</p>
+    <p>
+      <span>{{item.type}}</span>
+      <span>成员<em>{{item.member_count}}</em>人</span>
+      <span *ngIf="item.mark">编号<em>{{item.mark}}</em></span>
+      <span *ngIf="!item.mark">未生成编号</span>
+    </p>
+    <div class="money">
+      <my-progress [value]="item.money.existing" [max]="item.money.target"></my-progress>
+      <p>
+        <span>已筹<strong>{{item.money.existing | number:'0.0-2'}}</strong>元</span>
+        <span>目标<strong>{{item.money.target | number:'0.0-2'}}</strong>元</span>
+      </p>
+    </div>
+  </ion-item>
+
+</ion-list>

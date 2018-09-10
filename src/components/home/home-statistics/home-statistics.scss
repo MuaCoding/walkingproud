@@ -1,0 +1,41 @@
+home-statistics {
+  display: block;
+  padding: $content-gutter;
+
+  > ion-grid.grid {
+    padding: $content-gutter-half;
+    background: url("../assets/imgs/bg_statistics.jpg") no-repeat center center;
+    background-size: cover;
+    color: #fff;
+    text-align: center;
+    border-radius: 5px;
+    text-shadow: 0 2px 5px rgba(#000, 0.3);
+
+    .col {
+      padding: $content-gutter-half;
+
+      &:nth-child(2n) {
+        border-left: $hairlines-width solid rgba(#fff, 0.5);
+      }
+    }
+
+    label {
+      display: inline-block;
+      margin: .5em 0;
+      font-weight: 300;
+      font-size: 1.2rem;
+    }
+
+    p {
+      margin: 0;
+      font-weight: 300;
+      font-size: 1.1rem;
+      white-space: nowrap;
+
+      > strong {
+        font-size: 1.8rem;
+        color: inherit;
+      }
+    }
+  }
+}

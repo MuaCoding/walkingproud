@@ -1,0 +1,63 @@
+<ion-content no-bounce>
+
+  <ng-container *ngIf="team&&code">
+
+    <div class="background">
+      <div class="image" [style.background-image]="utility.background(team.activity.cover)"></div>
+      <div class="mask"></div>
+    </div>
+
+    <ion-toolbar class="transparent">
+      <ion-buttons start>
+        <button ion-button (click)="gotoMain()">
+          <ion-icon name="wp-homepage-outline"></ion-icon>首页
+        </button>
+      </ion-buttons>
+      <ion-buttons end>
+        <button ion-button (click)="navCtrl.goToRoot({})">
+          <ion-icon name="wp-flag-outline"></ion-icon>活动
+        </button>
+      </ion-buttons>
+    </ion-toolbar>
+
+    <div class="card" margin>
+      <div class="top">
+        <img [my-src]="team.picture" err-src="../assets/imgs/df-user.jpg">
+        <h2>{{team.name}}</h2>
+        <p>{{team.slogan}}</p>
+      </div>
+      <div class="content">
+        <p>邀请你加入</p>
+        <h3>{{team.activity.name}}</h3>
+        <p>快来与他一起益动</p>
+      </div>
+      <div class="footer">
+        <ng-container *ngIf="team.code.status==1">
+          <ng-container *ngIf="team.participant">
+            <ng-container *ngIf="team.participant.identity>0">
+              <p *ngIf="(team.participant.identity==2)&&(team.participant.team==team.id)">点击右上角分享给好友</p>
+              <p *ngIf="!((team.participant.identity==2)&&(team.participant.team==team.id))">您已加入队伍</p>
+            </ng-container>
+            <button ion-button round full color="secondary" (click)="join(team)" *ngIf="team.participant.identity==0">加入队伍</button>
+          </ng-container>
+          <button ion-button round full color="secondary" (click)="registration(team)" *ngIf="!team.participant">报名并加入队伍</button>
+        </ng-container>
+        <ng-container *ngIf="team.code.status==0">
+          <p>{{team.code.tips}}</p>
+        </ng-container>
+      </div>
+    </div>
+
+  </ng-container>
+
+  <ng-container *ngIf="!(team&&code)">
+
+    <empty-state [completed]="completed">
+      <h2>无效邀请页</h2>
+      <p>好像走丢了，回去看看吧</p>
+      <button ion-button (click)="navCtrl.goToRoot({})">活动主页</button>
+    </empty-state>
+
+  </ng-container>
+
+</ion-content>

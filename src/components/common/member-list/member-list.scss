@@ -1,0 +1,90 @@
+member-list {
+  display: block;
+
+  > ion-list.list {
+    > .item-block {
+      padding-right: $content-gutter;
+      border: none !important;
+
+      > .item-inner {
+        padding-right: 0;
+
+        .label {
+          margin-right: 0;
+
+          > h2 {
+            display: flex;
+            font-size: 1.4rem;
+            align-items: center;
+
+            > em {
+              @extend %textOverflow;
+
+              min-width: 0;
+            }
+
+            > span {
+              display: block;
+              margin-left: .5em;
+              padding: 0 .3em;
+              background-color: color($colors, primary);
+              font-size: 1.1rem;
+              line-height: 1.4em;
+              color: #fff;
+              border-radius: 2px;
+
+              &.captain {
+                background-color: color($colors, secondary);
+              }
+            }
+          }
+
+          > p {
+            > strong {
+              margin: 0 3px;
+              font-weight: normal;
+              color: inherit;
+            }
+
+            > em + em:before {
+              content: "";
+            }
+          }
+        }
+
+        > ion-note.note {
+          font-size: 1.4rem;
+        }
+
+        > .point {
+          display: flex;
+          overflow: hidden;
+          width: $content-gutter;
+          height: $content-gutter;
+          padding: 2px;
+          border: 1px solid #ddd;
+          border-radius: 50%;
+          align-items: center;
+          justify-content: center;
+
+          &:before {
+            display: block;
+            width: 100%;
+            height: 100%;
+            background-color: color($colors, primary);
+            border-radius: 50%;
+            content: "";
+          }
+        }
+      }
+
+      &:not(.active) {
+        > .item-inner {
+          > .point:before {
+            display: none;
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,34 @@
+page-article {
+  > ion-content.content {
+    section > div.article {
+      > h2 {
+        margin: 0;
+        font-weight: bold;
+        font-size: 1.6rem;
+      }
+
+      > p {
+        margin: 0;
+        margin-top: $content-gutter-half ;
+        font-size: 1.2rem;
+        color: color($text, light);
+      }
+
+      > hr {
+        margin: $content-gutter 0;
+        padding-top: $hairlines-width;
+        background-color: color($border, normal);
+      }
+
+      > .content {
+        line-height: 1.6em;
+
+        p {
+          &:first-child {
+            margin-top: 0;
+          }
+        }
+      }
+    }
+  }
+}

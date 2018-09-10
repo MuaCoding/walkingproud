@@ -1,0 +1,33 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>参赛协议</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+
+  <ng-container *ngIf="protocol">
+
+    <section padding>
+      <div class="content" [innerHTML]="protocol | sanitizeHtml"></div>
+    </section>
+
+  </ng-container>
+
+  <empty-state [completed]="completed" *ngIf="!protocol">
+    <p>无法获取参赛协议，请重试</p>
+  </empty-state>
+
+</ion-content>
+
+
+<ion-footer *ngIf="protocol">
+
+  <ion-toolbar padding>
+    <button ion-button full color="secondary" navPush="registration">同意并开始填写报名信息</button>
+  </ion-toolbar>
+
+</ion-footer>

@@ -1,0 +1,24 @@
+activity-statistics {
+  display: block;
+
+  > ion-grid.grid {
+    padding: $content-gutter-half;
+    text-align: center;
+
+    .col {
+      padding: $content-gutter-half;
+      font-size: 1.3rem;
+      color: color($text, light);
+    }
+
+    p {
+      margin: 0;
+      white-space: nowrap;
+
+      > strong {
+        font-size: 1.6rem;
+        color: $text-color;
+      }
+    }
+  }
+}

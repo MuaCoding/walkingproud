@@ -1,0 +1,15 @@
+<ion-slides pager>
+
+  <ion-slide *ngFor="let picture of data; trackBy: trackByFn;let index = index;">
+    <div class="image" (click)="onClick(index)">
+      <img [my-src]="picture" />
+    </div>
+  </ion-slide>
+
+  <ion-slide *ngIf="!data">
+    <div class="image">
+      <img src="../assets/imgs/df.jpg" />
+    </div>
+  </ion-slide>
+
+</ion-slides>

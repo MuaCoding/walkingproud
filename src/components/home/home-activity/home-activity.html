@@ -1,0 +1,7 @@
+<ng-container *ngIf="activity">
+  <activity-list [data]="activity"></activity-list>
+</ng-container>
+
+<empty-state [completed]="completed" middle *ngIf="!activity">
+  <p>没有相关的活动</p>
+</empty-state>

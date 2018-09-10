@@ -1,0 +1,125 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>队伍主页</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+
+  <ng-container *ngIf="team">
+
+    <section>
+      <div class="top">
+        <div class="cover">
+          <div class="background" [style.background-image]="utility.background(team.picture)"></div>
+          <div class="mask"></div>
+        </div>
+        <div class="avatar">
+          <img [my-src]="team.picture" err-src="../assets/imgs/df-logo.jpg" />
+        </div>
+        <div class="qrcode">
+          <a (click)="qrcode()">
+            <ion-icon name="wp-qrcode"></ion-icon>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section padding>
+      <div class="info">
+        <h2>{{team.name}}</h2>
+        <p>{{team.slogan}}</p>
+        <div class="tag">
+          <span>{{team.type}}</span>
+          <span class="mark" *ngIf="team.mark">编号<em>{{team.mark}}</em></span>
+          <span class="mark" *ngIf="!team.mark">未生成编号</span>
+        </div>
+        <div class="money">
+          <my-progress class="show-label" [value]="team.money.existing" [max]="team.money.target"></my-progress>
+          <div class="flex">
+            <div>
+              <p>￥<strong>{{team.money.existing | number:'0.0-2'}}</strong></p>
+              <span>已筹善款</span>
+            </div>
+            <div>
+              <p>￥<strong>{{team.money.target | number:'0.0-2'}}</strong></p>
+              <span>筹款目标</span>
+            </div>
+          </div>
+        </div>
+        <div class="registration" *ngIf="team.registration&&team.participant&&team.participant.identity==2&&team.participant.team==team.id">
+          <button ion-button clear (click)="registration(team)" *ngIf="team.registration.status==1">
+            已满足报名条件，点击开始报名
+            <ion-icon name="arrow-round-forward"></ion-icon>
+          </button>
+          <button ion-button clear disabled *ngIf="team.registration.status!=1">
+            {{team.registration.tips}}
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <section padding-horizontal *ngIf="team.activity.sponsor">
+      <div class="sponsor">
+        <div><img [my-src]="team.activity.sponsor"></div>
+      </div>
+    </section>
+
+    <section border-bottom>
+      <ion-toolbar fixed-scroll *ngIf="slides?.container">
+        <slide-tabs [slides]="slides"></slide-tabs>
+      </ion-toolbar>
+
+      <ion-slides #slides class="slide-tabs" auto-height>
+
+        <ion-slide title="捐赠项目">
+          <div class="project">
+            <h2>{{team.project.name}}</h2>
+            <div class="content" [innerHTML]="team.project.content | sanitizeHtml"></div>
+          </div>
+        </ion-slide>
+
+        <ion-slide title="捐赠记录">
+          <team-donation [id]="team.id" (change)="slides.update()"></team-donation>
+        </ion-slide>
+
+        <ion-slide title="队伍成员">
+          <member-list [data]="team.members"></member-list>
+        </ion-slide>
+
+      </ion-slides>
+    </section>
+
+  </ng-container>
+
+  <ng-container *ngIf="!team">
+
+    <empty-state [completed]="completed">
+      <h2>队伍不存在</h2>
+      <p>没啥好玩的，快回去吧</p>
+    </empty-state>
+
+  </ng-container>
+
+</ion-content>
+
+<ion-footer *ngIf="team">
+
+  <ion-toolbar>
+    <!-- 是参赛者 -->
+    <ng-container *ngIf="team.participant">
+      <button ion-button full clear (click)="joinTeam(team)" *ngIf="team.participant.identity==0&&applyJoin">加入队伍</button>
+      <!-- 我的队伍 -->
+      <ng-container *ngIf="team.participant.team==team.id">
+        <button ion-button full clear (click)="exitTeam(team)" *ngIf="team.participant.identity==1">退出队伍</button>
+        <button ion-button full clear navPush="team-manage" [navParams]="{id:team.id}" *ngIf="team.participant.identity==2">管理队伍</button>
+      </ng-container>
+    </ng-container>
+
+    <button ion-button full color="secondary" (click)="support(team)">支持我们</button>
+  </ion-toolbar>
+
+</ion-footer>

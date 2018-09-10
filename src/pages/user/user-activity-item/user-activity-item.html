@@ -1,0 +1,24 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>参赛信息</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+
+  <ng-container *ngIf="info">
+
+    <section>
+      <participant-info [data]="info" disabled></participant-info>
+    </section>
+
+  </ng-container>
+
+  <empty-state [completed]="completed" *ngIf="!info">
+    <p>未找到参赛信息</p>
+  </empty-state>
+
+</ion-content>

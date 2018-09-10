@@ -1,0 +1,88 @@
+page-search {
+  > ion-header.header {
+    > ion-toolbar.toolbar {
+      .back-button {
+        .back-button-icon {
+          min-width: 1.4rem;
+        }
+      }
+
+      .toolbar-content {
+        > ion-searchbar.searchbar {
+          padding: 0 4px;
+
+          > .searchbar-input-container {
+            margin-top: -2px;
+
+            .searchbar-input {
+              background-color: $background-color;
+              border-radius: 15px;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  > ion-content.content {
+    section > header.history {
+      position: relative;
+      color: color($text, light);
+
+      h2 {
+        margin: 0;
+        font-size: 1.2rem;
+        line-height: 2em;
+      }
+
+      a {
+        display: block;
+        position: absolute;
+        top: 2px;
+        right: 0;
+
+        &:before {
+          position: absolute;
+          top: -6px;
+          right: -6px;
+          bottom: -6px;
+          left: -6px;
+          content: "";
+        }
+      }
+    }
+
+    section > ion-grid.history {
+      margin: 0 -10px;
+
+      .col {
+        flex: 0;
+        white-space: nowrap;
+
+        > a {
+          display: block;
+          padding: 5px 15px;
+          border: $hairlines-width solid color($border, normal);
+          background-color: #fff;
+          font-size: 1.3rem;
+        }
+      }
+    }
+
+    section > news-list {
+      > ion-list.list {
+        margin: -1px 0;
+      }
+    }
+
+    .top {
+      position: absolute;
+      z-index: 99;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      background-color: $background-color;
+    }
+  }
+}

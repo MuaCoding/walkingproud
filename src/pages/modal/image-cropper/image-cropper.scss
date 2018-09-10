@@ -1,0 +1,39 @@
+page-image-cropper {
+  > ion-header.header {
+    > .toolbar {
+      .bar-button {
+        ion-icon.icon {
+          font-size: 2rem;
+
+          &.check {
+            font-size: 3rem;
+          }
+        }
+      }
+    }
+  }
+
+  > ion-content.content {
+    image-cropper.cropper {
+      height: 100%;
+      padding: 0;
+      background-color: #000;
+      line-height: 1;
+      align-items: center;
+
+      div.cropper {
+        outline-color: rgba(#000, 0.6);
+
+        &:after {
+          border: none;
+        }
+
+        > .resize {
+          &.top, &.bottom, &.left, &.right {
+            display: none;
+          }
+        }
+      }
+    }
+  }
+}

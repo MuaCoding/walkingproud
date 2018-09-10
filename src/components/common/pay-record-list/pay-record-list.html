@@ -1,0 +1,10 @@
+<ion-list>
+
+  <ion-item *ngFor="let item of data; trackBy: trackByFn;">
+    <h2>{{item.activity.name}}</h2>
+    <p>捐赠金额：{{item.money | number:'0.2-2'}}元</p>
+    <button ion-button round item-end color="secondary" *ngIf="item.status==0" navPush="apply-receipt" [navParams]="{id:item.id}">申请</button>
+    <button ion-button round item-end disabled *ngIf="item.status==1">已申请</button>
+  </ion-item>
+
+</ion-list>

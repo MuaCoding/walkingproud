@@ -1,0 +1,63 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>项目详情</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+
+  <ng-container *ngIf="project">
+
+    <section>
+      <div class="slides">
+        <gallery [data]="project.picture"></gallery>
+      </div>
+    </section>
+
+    <section border padding>
+
+      <div class="info">
+        <h2>{{project.name}}</h2>
+        <p>发起组织：<em>{{project.organization.name}}</em></p>
+        <div class="flex">
+          <div class="tag">
+            <span>{{project.type}}</span>
+          </div>
+          <my-progress class="show-label" [value]="project.money.existing" [max]="project.money.target" *ngIf="project.money.target"></my-progress>
+          <p>已筹款<strong>{{project.money.existing | number:'0.0-2'}}</strong>元</p>
+        </div>
+      </div>
+    </section>
+
+    <section border margin-top-half style="padding-top: 1px;">
+      <ion-toolbar fixed-scroll *ngIf="slides?.container">
+        <slide-tabs [slides]="slides"></slide-tabs>
+      </ion-toolbar>
+
+      <ion-slides #slides class="slide-tabs" auto-height>
+
+        <ion-slide title="项目介绍">
+          <div class="content" [innerHTML]="project.content | sanitizeHtml"></div>
+        </ion-slide>
+
+        <ion-slide title="组织详情">
+          <div class="content" [innerHTML]="project.organization.content | sanitizeHtml"></div>
+        </ion-slide>
+
+        <ion-slide title="项目简报">
+          <project-event [id]="project.id" (change)="slides.update()"></project-event>
+        </ion-slide>
+
+      </ion-slides>
+    </section>
+
+  </ng-container>
+
+  <empty-state [completed]="completed" *ngIf="!project">
+    <p>未找到项目详情</p>
+  </empty-state>
+
+</ion-content>

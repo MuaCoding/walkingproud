@@ -1,0 +1,81 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>管理队伍</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+
+  <ng-container *ngIf="team">
+
+    <section border>
+      <ion-grid class="members">
+        <ion-row>
+
+          <ion-col col-3 *ngFor="let item of team.members">
+            <a (click)="member(item)">
+              <user-avatar [picture]="item.picture" [sex]="item.sex"></user-avatar>
+              <h2>{{item.name}}</h2>
+            </a>
+          </ion-col>
+
+          <ion-col col-3 *ngIf="team.members.length<team.member_limit">
+            <a (click)="addMember()">
+              <div class="add">
+                <ion-icon name="add"></ion-icon>
+              </div>
+            </a>
+          </ion-col>
+
+        </ion-row>
+      </ion-grid>
+    </section>
+
+    <section margin-top-half>
+      <ion-list>
+
+        <ion-item detail-push image-select (process)="changeLogo($event)">
+          <ion-label>队伍标志</ion-label>
+          <ion-avatar item-end>
+            <img [my-src]="team.picture" err-src="../assets/imgs/df-logo.jpg" />
+          </ion-avatar>
+        </ion-item>
+
+        <ion-item (click)="changeName(team)">
+          <ion-label>队伍名称</ion-label>
+          <ion-note item-end>{{team.name}}</ion-note>
+        </ion-item>
+
+        <ion-item (click)="changeSlogan(team)">
+          <ion-label>队伍口号</ion-label>
+          <ion-note item-end>{{team.slogan}}</ion-note>
+        </ion-item>
+
+      </ion-list>
+    </section>
+
+    <section margin-top-half>
+      <ion-list>
+
+        <ion-item detail-push navPush="team-audit" [navParams]="{id:id}">
+          <ion-label>新的成员</ion-label>
+          <ion-badge color="danger" item-end *ngIf="team.new">{{team.new}}</ion-badge>
+        </ion-item>
+
+        <ion-item (click)="dissolve(team)">
+          <ion-label>解散并退出队伍</ion-label>
+        </ion-item>
+
+      </ion-list>
+    </section>
+
+  </ng-container>
+
+  <empty-state [completed]="completed" *ngIf="!team">
+    <p>无权访问</p>
+  </empty-state>
+
+</ion-content>

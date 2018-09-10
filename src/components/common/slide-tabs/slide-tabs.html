@@ -1,0 +1,7 @@
+<ion-segment [(ngModel)]="index" (ionChange)="segmentChanged($event)" *ngIf="titles.length>0">
+
+  <ion-segment-button *ngFor="let title of titles; let idx = index; trackBy: trackByFn;" [value]="idx">
+    <strong>{{title}}</strong>
+  </ion-segment-button>
+
+</ion-segment>

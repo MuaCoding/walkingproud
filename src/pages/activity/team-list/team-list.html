@@ -1,0 +1,41 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>队伍列表</ion-title>
+    <ion-buttons end *ngIf="participant">
+      <button ion-button navPush="team-create" *ngIf="!participant.team">创建队伍</button>
+      <button ion-button navPush="team-item" [navParams]="{id:participant.team}" *ngIf="participant.team">我的队伍</button>
+    </ion-buttons>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+
+  <ion-refresher (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+
+  <form name="teamList" (ngSubmit)="process()" *ngIf="init">
+    <button type="submit" hidden></button>
+    <ion-searchbar placeholder="搜索队伍名称或编号，如：YD3861" name="keyword" [(ngModel)]="keyword" debounce="500" (ionInput)="doRefresh()"></ion-searchbar>
+  </form>
+
+  <ng-container *ngIf="result?.data">
+
+    <section>
+      <team-list [data]="result.data"></team-list>
+    </section>
+
+  </ng-container>
+
+  <empty-state [completed]="result?.completed" *ngIf="!(result?.data)">
+    <p>还没有队伍，晚点再来看看</p>
+  </empty-state>
+
+  <ion-infinite-scroll (ionInfinite)="doInfinite($event)" [enabled]="result?.more">
+    <ion-infinite-scroll-content></ion-infinite-scroll-content>
+  </ion-infinite-scroll>
+
+</ion-content>

@@ -1,0 +1,66 @@
+page-team-manage {
+  > ion-content.content {
+    section > ion-grid.members {
+      padding: $content-gutter-half;
+      text-align: center;
+
+      .col {
+        padding: $content-gutter-half;
+        line-height: 1;
+        color: color($text, light);
+
+        > a {
+          display: inline-block;
+        }
+      }
+
+      .add {
+        display: flex;
+        width: $item-ios-avatar-size + 2px;
+        height: $item-ios-avatar-size + 2px;
+        border: $hairlines-width solid color($border, light);
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+
+        > ion-icon {
+          font-size: 4rem;
+        }
+      }
+
+      h2 {
+        @extend %textOverflow;
+
+        max-width: $item-ios-avatar-size + 2px;
+        margin: 0;
+        margin-top: .5em;
+        font-size: 1.2rem;
+      }
+    }
+
+    section > ion-list.list {
+      > .item {
+        font-size: 1.4rem;
+        border-color: color($border, normal);
+
+        > .item-inner {
+          border-color: inherit;
+
+          > .input-wrapper {
+            min-width: 64px;
+          }
+
+          > [item-end] {
+            @extend %textOverflow;
+          }
+
+          ion-avatar {
+            > img {
+              border: $hairlines-width solid color($border, normal);
+            }
+          }
+        }
+      }
+    }
+  }
+}

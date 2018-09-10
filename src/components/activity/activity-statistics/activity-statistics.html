@@ -1,0 +1,20 @@
+<ion-grid>
+  <ion-row>
+
+    <ion-col col-4>
+      <label>筹款总额</label>
+      <p><strong countUp [endVal]="(statistics.shrink?statistics.shrink:statistics.money)" decimals="2" duration="1.2">0.00</strong> {{statistics.shrink?'万':''}}元</p>
+    </ion-col>
+
+    <ion-col col-4>
+      <label>报名队伍</label>
+      <p><strong countUp [endVal]="statistics.team" duration="1.2">0</strong> 支</p>
+    </ion-col>
+
+    <ion-col col-4>
+      <label>爱心捐赠</label>
+      <p><strong countUp [endVal]="statistics.count" duration="1.2">0</strong> 次</p>
+    </ion-col>
+
+  </ion-row>
+</ion-grid>

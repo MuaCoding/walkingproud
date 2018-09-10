@@ -1,0 +1,11 @@
+<ion-list>
+
+  <ion-item navPush="article" [navParams]="{type:articleType,id:item.id}" *ngFor="let item of data; trackBy: trackByFn;">
+    <ion-thumbnail item-end>
+      <img [my-src]="item.picture">
+    </ion-thumbnail>
+    <h2>{{item.title}}</h2>
+    <p>{{item.created_at | myDate:'yyyy年MM月dd日 HH:mm':'MM月dd日 HH:mm'}}</p>
+  </ion-item>
+
+</ion-list>

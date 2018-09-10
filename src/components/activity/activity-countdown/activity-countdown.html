@@ -1,0 +1,28 @@
+<div>
+  <div class="countdown">
+    <ng-container *ngIf="(time.day.activity_begin>0)">
+      <label>距活动开始还有</label>
+      <p><strong>{{time.day.activity_begin | number:'0.0-0'}}</strong> 天</p>
+    </ng-container>
+
+    <ng-container *ngIf="!(time.day.activity_begin>0)&&(time.day.activity_end>0)">
+      <ion-icon name="wp-time-outline"></ion-icon>
+      <label>活动进行中</label>
+    </ng-container>
+
+    <ng-container *ngIf="!(time.day.activity_begin>0)&&!(time.day.activity_end>0)">
+      <ion-icon name="wp-success-outline"></ion-icon>
+      <label>活动已结束</label>
+    </ng-container>
+  </div>
+
+  <div class="info">
+    <div *ngIf="(time.day.signup_begin>0)"><label>报名开始日期</label><time>{{time.signup_begin | date:'yyyy.MM.dd'}}</time></div>
+    <div *ngIf="!(time.day.signup_begin>0)"><label>报名截止日期</label><time>{{time.signup_end | date:'yyyy.MM.dd'}}</time></div>
+    <div *ngIf="(time.day.donation_begin>0)"><label>筹款开始日期</label><time>{{time.donation_begin | date:'yyyy.MM.dd'}}</time></div>
+    <div *ngIf="!(time.day.donation_begin>0)"><label>筹款截止日期</label><time>{{time.donation_end | date:'yyyy.MM.dd'}}</time></div>
+    <div *ngIf="(time.day.activity_begin>0)"><label>活动开始日期</label><time>{{time.activity_begin | date:'yyyy.MM.dd'}}</time></div>
+    <div *ngIf="!(time.day.activity_begin>0)"><label>活动结束日期</label><time>{{time.activity_end | date:'yyyy.MM.dd'}}</time></div>
+  </div>
+
+</div>

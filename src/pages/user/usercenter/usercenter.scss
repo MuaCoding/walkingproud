@@ -1,0 +1,91 @@
+page-usercenter {
+  > ion-content.content {
+    section > .user {
+      padding-top: $content-gutter * 3.5;
+      background: url("../assets/imgs/bg_usercenter.png") no-repeat center top;
+      background-size: 100% 100px;
+      text-align: center;
+
+      > user-avatar {
+        > img {
+          width: 85px;
+          height: 85px;
+          border: 3px solid #fff;
+          box-shadow: 0 1px 5px rgba(#000, 0.1);
+        }
+
+        > .sex {
+          bottom: 5px;
+          right: 5px;
+        }
+      }
+
+      > h2 {
+        @extend %textOverflow;
+
+        margin: 0;
+        margin-top: .5em;
+        font-weight: bold;
+        font-size: 1.6rem;
+      }
+    }
+
+    section > ion-grid.statistics {
+      padding: $content-gutter $content-gutter-half;
+
+      .col {
+        padding: 0 $content-gutter-half;
+        text-align: center;
+
+        & + .col {
+          border-left: $hairlines-width solid color($border, normal);
+        }
+
+        div {
+          font-weight: bold;
+
+          > strong {
+            margin-right: 3px;
+            font-size: 1.5rem;
+            color: inherit;
+          }
+        }
+
+        p {
+          margin: 0;
+          margin-top: .2em;
+          font-size: 1.1rem;
+          color: color($text, light);
+        }
+      }
+    }
+
+    section > ion-list.icons {
+      > .item-block {
+        border-color: color($border, normal);
+
+        > .item-inner {
+          border-color: color($border, normal);
+
+          .label {
+            display: flex;
+
+            > ion-icon {
+              font-size: 1.2em;
+              margin-right: .6em;
+            }
+
+            > h2 {
+              font-weight: bold;
+              font-size: inherit;
+            }
+          }
+
+          .note {
+            font-size: 1.3rem;
+          }
+        }
+      }
+    }
+  }
+}

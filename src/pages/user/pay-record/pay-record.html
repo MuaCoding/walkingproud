@@ -1,0 +1,26 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>支付记录</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+  <ion-refresher (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+
+  <section>
+    <pay-record-list [data]="result.data"></pay-record-list>
+  </section>
+
+  <empty-state [completed]="result?.completed" *ngIf="!(result?.data)">
+    <p>暂无支付记录</p>
+  </empty-state>
+
+  <ion-infinite-scroll (ionInfinite)="doInfinite($event)" [enabled]="result?.more">
+    <ion-infinite-scroll-content></ion-infinite-scroll-content>
+  </ion-infinite-scroll>
+</ion-content>

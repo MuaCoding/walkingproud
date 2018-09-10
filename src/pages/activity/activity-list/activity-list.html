@@ -1,0 +1,28 @@
+<ion-header>
+
+  <ion-navbar hideBackButton>
+    <ion-title>活动赛事</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content no-bounce>
+
+  <ion-refresher (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+
+  <section border *ngIf="result?.data">
+    <activity-list [data]="result.data"></activity-list>
+  </section>
+
+  <empty-state [completed]="result?.completed" *ngIf="!(result?.data)">
+    <p>暂无活动赛事</p>
+  </empty-state>
+
+  <ion-infinite-scroll (ionInfinite)="doInfinite($event)" [enabled]="result?.more">
+    <ion-infinite-scroll-content></ion-infinite-scroll-content>
+  </ion-infinite-scroll>
+
+</ion-content>

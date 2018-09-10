@@ -1,0 +1,87 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>填写队伍信息</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+
+  <ng-container *ngIf="typePicker&&projectPicker">
+
+    <form name="team-create" novalidate #form="ngForm" [class.submitted]="form.submitted" (ngSubmit)="process(form)">
+      <section>
+        <ion-list>
+
+          <ion-list-header>队伍信息</ion-list-header>
+
+          <ion-item detail-push image-select (process)="formData.picture=$event" [class.ng-invalid]="!formData.picture">
+            <ion-label stacked>标志</ion-label>
+            <div item-content>
+              <ion-input type="text" placeholder="选一个易识别的标志吧" [value]="formData.picture?'已上传队伍标志':null" disabled></ion-input>
+            </div>
+            <ion-avatar item-end>
+              <img [my-src]="formData.picture" err-src="../assets/imgs/df-logo.jpg" />
+            </ion-avatar>
+          </ion-item>
+
+          <ion-item [class.ng-invalid]="form.controls['name']?.invalid">
+            <ion-label stacked>名称</ion-label>
+            <div item-content>
+              <ion-input type="text" placeholder="给你的队伍起个响亮的名称，15字以内" name="name" [(ngModel)]="formData.name" maxLength="15" required></ion-input>
+            </div>
+          </ion-item>
+
+          <ion-item>
+            <ion-label stacked>口号</ion-label>
+            <div item-content>
+              <ion-input type="text" placeholder="每一步，都有力量！" name="slogan" [(ngModel)]="formData.slogan" maxLength="15"></ion-input>
+            </div>
+          </ion-item>
+
+          <ion-item [class.ng-invalid]="form.controls['type']?.invalid">
+            <ion-label stacked>组别</ion-label>
+            <div item-content>
+              <ion-multi-picker [multiPickerColumns]="typePicker" cancelText="取消" doneText="确认" placeholder="请根据实际需求选择" name="type" [(ngModel)]="formData.type" required></ion-multi-picker>
+            </div>
+          </ion-item>
+
+        </ion-list>
+      </section>
+
+      <section>
+        <ion-list>
+
+          <ion-list-header>募款信息</ion-list-header>
+
+          <ion-item [class.ng-invalid]="form.controls['project']?.invalid">
+            <ion-label stacked>项目</ion-label>
+            <div item-content>
+              <ion-multi-picker [multiPickerColumns]="projectPicker" cancelText="取消" doneText="确认" placeholder="您所筹集的款项将会捐赠给此项目" name="project" [(ngModel)]="formData.project" required></ion-multi-picker>
+            </div>
+          </ion-item>
+
+          <ion-item [class.ng-invalid]="form.controls['target']?.invalid">
+            <ion-label stacked>目标</ion-label>
+            <div item-content>
+              <ion-input type="number" placeholder="募款目标不低于1000元" name="target" [(ngModel)]="formData.money.target" min="1000" required></ion-input>
+            </div>
+          </ion-item>
+
+        </ion-list>
+      </section>
+
+      <section no-background padding>
+        <button type="submit" ion-button full color="secondary">创建队伍</button>
+      </section>
+    </form>
+
+  </ng-container>
+
+  <empty-state [completed]="completed" *ngIf="!(typePicker&&projectPicker)">
+    <p>无法获取组别或项目数据</p>
+  </empty-state>
+
+</ion-content>

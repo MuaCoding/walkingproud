@@ -1,0 +1,40 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>我的活动</ion-title>
+    <ion-buttons end>
+      <button ion-button (click)="countInfoModal()">
+        <ion-icon name="stats-outline"></ion-icon>
+      </button>
+    </ion-buttons>
+
+  </ion-navbar>
+
+  <ion-toolbar>
+    <slide-tabs [slides]="slides" [index]="index" (change)="content.resize()" *ngIf="slides?.container"></slide-tabs>
+  </ion-toolbar>
+
+</ion-header>
+
+
+<ion-content #content>
+  <ion-slides #slides class="slide-tabs">
+
+    <ion-slide title="全部">
+      <page-user-activity-list [params]="{type:0}"></page-user-activity-list>
+    </ion-slide>
+
+    <ion-slide title="已报名">
+      <page-user-activity-list [params]="{type:1}"></page-user-activity-list>
+    </ion-slide>
+
+    <ion-slide title="进行中">
+      <page-user-activity-list [params]="{type:2}"></page-user-activity-list>
+    </ion-slide>
+
+    <ion-slide title="已结束">
+      <page-user-activity-list [params]="{type:3}"></page-user-activity-list>
+    </ion-slide>
+
+  </ion-slides>
+</ion-content>

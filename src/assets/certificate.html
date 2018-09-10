@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="zh-CN" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="viewport-fit=cover, width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta name="author" content="ETXIN" />
+  <title>捐赠证书 - 益动</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    body {
+      width: 100vw;
+      height: 100vh;
+      margin: 0;
+      background-color: #f9f9f9;
+      font-family: "PingFang SC", "Helvetica Neue", Helvetica, Arial, "Microsoft YaHei", STHeitiSC-Light, simsun, sans-serif;
+    }
+
+    #main {
+      display: none;
+    }
+
+    .background {
+      position: fixed;
+      z-index: 2;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+    }
+
+    .background>.image {
+      width: 100%;
+      height: 100%;
+      background: url("../assets/imgs/certificate/background.png") no-repeat center bottom;
+      background-size: contain;
+      transform: scale(1.1);
+      filter: blur(5px);
+    }
+
+    .container {
+      display: block;
+      position: absolute;
+      z-index: 3;
+      left: 0;
+      right: 0;
+      top: 0;
+      bottom: 0;
+      padding: 16px;
+      color: #222233;
+      overflow-x: hidden;
+      overflow-y: scroll;
+      will-change: scroll-position;
+      contain: size style layout;
+    }
+
+    .container>.logo {
+      display: block;
+      padding: 16px;
+      text-align: center;
+    }
+
+    .container>.logo>img {
+      display: inline-block;
+      height: 50px;
+    }
+
+    .container>.certificate {
+      display: flex;
+      overflow: hidden;
+      max-width: 300px;
+      margin: 0 auto;
+      padding: 8px;
+      background-color: #fff;
+      font-size: 14px;
+      border-radius: 3px;
+    }
+
+    .container>.certificate>.cover {
+      padding: 3px;
+      background-image: url("../assets/imgs/certificate/border.png");
+      background-size: cover;
+    }
+
+    .container>.certificate>.cover>.info {
+      display: block;
+      overflow: hidden;
+      background-color: #fff;
+    }
+
+    .container>.certificate>.cover>.info h2 {
+      height: 60px;
+      margin: 16px;
+      background: url("../assets/imgs/certificate/title.png") no-repeat center center;
+      background-size: contain;
+      font-size: 1.4rem;
+      text-indent: -999em;
+    }
+
+    .container>.certificate>.cover>.info>div {
+      display: block;
+      padding: 16px 24px;
+    }
+
+    .container>.certificate>.cover>.info>div>label>strong {
+      margin: 0 3px;
+      color: inherit;
+    }
+
+    .container>.certificate>.cover>.info>div>p {
+      text-align: justify;
+    }
+
+    .container>.certificate>.cover>.info>div>p:first-of-type {
+      margin-top: 0;
+    }
+
+    .container>.certificate>.cover>.info>div>p:last-of-type {
+      margin-bottom: 0;
+    }
+
+    .container>.certificate>.cover>.info>div>p.text-indent {
+      line-height: 1.8em;
+      text-indent: 2em;
+    }
+
+    .container>.certificate>.cover>.info>div>p>strong {
+      margin: 0 5px;
+      border-bottom: 1px solid #dddddd;
+      color: inherit;
+    }
+
+    .container>.certificate>.cover>.info>footer {
+      padding: 16px;
+      font-size: 14px;
+      text-align: right;
+    }
+
+    .container>.certificate>.cover>.info>footer>h3 {
+      margin: 0;
+      margin-bottom: .2em;
+      font-weight: bold;
+      font-size: inherit;
+    }
+
+    .container>.footer {
+      display: flex;
+      padding: 16px;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .container>.footer>a {
+      width: 125px;
+      line-height: 40px;
+      font-size: 14px;
+      border-radius: 64px;
+      color: #fff;
+      background-color: #ff8f22;
+      text-align: center;
+      box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+    }
+
+    .container>.footer>a:first-child {
+      color: #ff8f22;
+      background-color: #fff;
+    }
+
+    .container>.footer>a+a {
+      margin-left: 1em;
+    }
+
+    #empty-state {
+      display: flex;
+      z-index: 1;
+      width: 100%;
+      height: 100%;
+      padding: 16px;
+      align-items: center;
+      justify-content: center;
+    }
+
+    #empty-state>div {
+      display: block;
+      max-width: 100%;
+    }
+
+    #empty-state>div>.image {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    #empty-state>div>.image+p {
+      margin-top: .8em;
+    }
+
+    #empty-state>div>p {
+      margin: 0;
+      font-weight: 300;
+      font-size: 14px;
+      color: #222233;
+    }
+
+  </style>
+</head>
+
+<body>
+
+  <div id="main">
+
+    <div class="background">
+      <div class="image"></div>
+    </div>
+
+    <div class="container">
+      <div class="logo">
+        <img src="../assets/imgs/certificate/logo.png">
+      </div>
+
+      <div class="certificate">
+        <div class="cover">
+          <div class="info">
+            <h2>捐赠证书</h2>
+            <div id="info">
+              <p>亲爱的<strong id="name">姓名</strong>先生/小姐：</p>
+              <p class="text-indent">感谢您在<strong id="activity">活动</strong>中，为<strong id="project">项目</strong>捐赠<strong id="money">0.00</strong>元人民币。</p>
+              <p>特此证明，以示感谢。</p>
+            </div>
+            <footer>
+              <h3 id="issuer">颁发者</h3>
+              <time id="time">2015年01月01日</time>
+            </footer>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer">
+        <a id="walkingproud" href="javascript:;">了解益动</a>
+        <a id="support" href="javascript:;">我要支持</a>
+      </div>
+    </div>
+
+  </div>
+
+  <div id="empty-state">
+    <div>
+      <div class="image">
+        <img src="../assets/imgs/empty-state.png" style="width: 80px;">
+      </div>
+      <p>正在加载中...</p>
+    </div>
+  </div>
+
+  <script>
+    var webapi = "http://192.168.1.11:288";
+    var origin = "https://m.wp.upup.cn";
+
+    var mock = {
+      code: 0,
+      msg: "",
+      data: {
+        id: 1,
+        money: 2900.00,
+        date: "2018年05月24日",
+        created_at: "2018-05-24T15:00:00.000+08:00",
+        name: "ETXIN",
+        activity: {
+          id: 1,
+          name: "益动广东2018公益徒步团队赛",
+          issuer: "益动广东组委会"
+        },
+        project: {
+          id: 1,
+          name: "邻里守望心连心，社区和谐一家亲",
+        }
+      }
+    };
+
+    /** 解析URL参数 */
+    function parseUrlParam(name) {
+      var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
+      var match = location.search.substr(1).match(reg);
+      if (match != null) return match[2];
+      return null;
+    }
+
+    /** 更改提示信息 */
+    function changeTips(tips) {
+      document.getElementById("empty-state").getElementsByTagName("p")[0].innerText = tips;
+    }
+
+    /** 获取证书信息 */
+    function getInfo(id) {
+      var xhr = new XMLHttpRequest();
+      xhr.open("GET", webapi + "/pay/certificate/" + id);
+      xhr.send();
+
+      xhr.addEventListener('load', function(e) {
+        var status = e.target.status;
+        var response = JSON.parse(e.target.response);
+
+        if (status == 200) {
+          var result = response.data;
+          setInfo(result.data);
+        }
+        else {
+          changeTips("无法获取证书信息");
+        }
+      });
+
+      xhr.addEventListener('error', function(e) {
+        changeTips("接口请求失败，请重试");
+        setInfo(mock.data);
+      });
+    }
+
+    /** 绑定数据 */
+    function setInfo(data) {
+      document.getElementById("main").style.display = 'block';
+
+      document.getElementById("name").innerText = data.name;
+      document.getElementById("activity").innerText = data.activity.name;
+      document.getElementById("project").innerText = data.project.name;
+      document.getElementById("money").innerText = parseFloat(data.money).toFixed(2);
+      document.getElementById("issuer").innerText = data.activity.issuer;
+      document.getElementById("time").innerText = formatDate(data.date);
+
+      document.getElementById("walkingproud").setAttribute("href", origin);
+      document.getElementById("support").setAttribute("href", origin + "/substation/activity/" + data.activity.id + "/team");
+    }
+
+    window.onload = function() {
+      var id = parseUrlParam("order_id");
+      if (id) {
+        getInfo(id);
+      }
+      else {
+        changeTips("错误的访问来源");
+      }
+    }
+
+  </script>
+</body>

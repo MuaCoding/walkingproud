@@ -1,0 +1,14 @@
+load-more {
+  display: block;
+  padding: $content-gutter;
+  border-top: $hairlines-width solid color($border, light);
+  font-size: 1.3rem;
+  color: color($colors, primary);
+  text-align: center;
+
+  > ion-spinner.spinner {
+    width: 16px;
+    height: 16px;
+    vertical-align: middle;
+  }
+}

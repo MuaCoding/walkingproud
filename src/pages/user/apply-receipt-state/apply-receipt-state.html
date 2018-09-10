@@ -1,0 +1,19 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>申请结果</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+
+  <empty-state completed>
+    <img image src="../assets/imgs/icon_apply_receipt.png" style="width: 100px;">
+    <h2>收据申请成功</h2>
+    <p>票据将会邮寄至您填写的收货地址，请注意签收</p>
+    <button ion-button color="secondary" (click)="navCtrl.goToRoot({})">返回会员中心</button>
+  </empty-state>
+
+</ion-content>

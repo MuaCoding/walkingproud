@@ -1,0 +1,10 @@
+<ul>
+  <li *ngFor="let item of data; trackBy: trackByFn;">
+    <h3>{{item.name}}</h3>
+    <div>
+      <a (click)="toLink(partner)" *ngFor="let partner of item.children; trackBy: trackByFn;">
+        <img [my-src]="partner.picture" [alt]="partner.name">
+      </a>
+    </div>
+  </li>
+</ul>

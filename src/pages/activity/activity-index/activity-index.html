@@ -1,0 +1,112 @@
+<ion-content>
+
+  <ng-container *ngIf="activity">
+
+    <ion-toolbar class="transparent">
+      <ion-buttons start>
+        <button ion-button (click)="gotoMain()">
+          <ion-icon name="wp-homepage-outline"></ion-icon>首页
+        </button>
+      </ion-buttons>
+      <ion-buttons end>
+        <button ion-button (click)="gotoMain(3)">
+          <ion-icon name="wp-people"></ion-icon>我的
+        </button>
+      </ion-buttons>
+    </ion-toolbar>
+
+    <section box-shadow>
+      <div class="cover">
+        <img [my-src]="activity.ui.cover">
+        <div class="mask"></div>
+      </div>
+
+      <div class="info" padding>
+        <h2>{{activity.name}}</h2>
+        <div class="tags"><span>{{activity.type}}</span></div>
+        <p>
+          <span><ion-icon name="wp-coordinates"></ion-icon><em>{{activity.province}}</em><em>{{activity.city}}</em></span>
+          <span><ion-icon name="wp-time"></ion-icon><time>{{activity.time.activity_begin | date:'yyy年MM月dd日'}}</time></span>
+        </p>
+        <div class="buttons">
+          <button ion-button round [style.background-image]="utility.background(activity.ui.primary_button)" (click)="donation(activity)">我要捐款</button>
+          <button ion-button round color="secondary" [style.background-image]="utility.background(activity.ui.secondary_button)" (click)="registration(activity)">
+            {{activity.participant ? (activity.participant.team ? "我的队伍" : "加入队伍") : "报名参赛"}}
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <section margin-top-half box-shadow>
+      <div padding-horizontal padding-top>
+        <activity-countdown [time]="activity.time" [style.background-image]="utility.background(activity.ui.statistics)"></activity-countdown>
+      </div>
+
+      <activity-statistics [id]="activity.id"></activity-statistics>
+
+      <ion-grid class="navigation">
+        <ion-row>
+
+          <ion-col col-3>
+            <a navPush="activity-introduction">
+              <ion-icon name="wp-activity-outline" class="first" [style.background-image]="utility.background(activity.ui.navigation_first)"></ion-icon>
+              <h2>活动介绍</h2>
+            </a>
+          </ion-col>
+
+          <ion-col col-3>
+            <a navPush="activity-project-list">
+              <ion-icon name="wp-flag1" class="fourth" [style.background-image]="utility.background(activity.ui.navigation_fourth)"></ion-icon>
+              <h2>公益项目</h2>
+            </a>
+          </ion-col>
+
+          <ion-col col-3>
+            <a navPush="team-list">
+              <ion-icon name="wp-team" class="second" [style.background-image]="utility.background(activity.ui.navigation_second)"></ion-icon>
+              <h2>队伍列表</h2>
+            </a>
+          </ion-col>
+
+          <ion-col col-3>
+            <a navPush="news-list">
+              <ion-icon name="wp-compass" class="third" [style.background-image]="utility.background(activity.ui.navigation_third)"></ion-icon>
+              <h2>资讯中心</h2>
+            </a>
+          </ion-col>
+
+        </ion-row>
+      </ion-grid>
+    </section>
+
+    <section margin-top-half box-shadow>
+      <header margin-horizontal margin-top>
+        <h2>益动排行</h2>
+        <p>仅当前活动下的数据</p>
+      </header>
+
+      <activity-ranking [id]="activity.id"></activity-ranking>
+    </section>
+
+    <section margin-top-half box-shadow>
+      <header margin-horizontal margin-top>
+        <h2>合作单位</h2>
+        <p>排名不分先后顺序</p>
+      </header>
+
+      <activity-partner [id]="activity.id" padding></activity-partner>
+    </section>
+
+  </ng-container>
+
+  <ng-container *ngIf="!activity">
+
+    <empty-state [completed]="completed">
+      <h2>活动站点无效</h2>
+      <p>好像走丢了，回去看看吧</p>
+      <button ion-button (click)="gotoMain()">返回主站</button>
+    </empty-state>
+
+  </ng-container>
+
+</ion-content>

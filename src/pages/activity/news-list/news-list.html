@@ -1,0 +1,28 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>资讯中心</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content no-bounce>
+
+  <ion-refresher (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+
+  <section *ngIf="result?.data">
+    <news-list [data]="result.data"></news-list>
+  </section>
+
+  <empty-state [completed]="result?.completed" *ngIf="!(result?.data)">
+    <p>暂无相关资讯</p>
+  </empty-state>
+
+  <ion-infinite-scroll (ionInfinite)="doInfinite($event)" [enabled]="result?.more">
+    <ion-infinite-scroll-content></ion-infinite-scroll-content>
+  </ion-infinite-scroll>
+
+</ion-content>

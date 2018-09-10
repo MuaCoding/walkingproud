@@ -1,0 +1,28 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>缴纳报名费</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+
+  <ng-container *ngIf="member">
+
+    <section border>
+      <member-list [data]="member"></member-list>
+
+      <div padding>
+        <button ion-button full color="secondary" (click)="pay()">立即支付 {{total | number:'0.0-2'}} 元</button>
+      </div>
+    </section>
+
+  </ng-container>
+
+  <empty-state [completed]="completed" *ngIf="!member">
+    <p>暂无成员缴费信息</p>
+  </empty-state>
+
+</ion-content>

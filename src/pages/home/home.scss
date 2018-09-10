@@ -1,0 +1,95 @@
+page-home {
+  > ion-header.header {
+    > ion-toolbar.toolbar {
+      min-height: 56px;
+
+      .toolbar-content {
+        > .title {
+          padding-left: 10px;
+        }
+      }
+
+      .toolbar-title {
+        > img {
+          display: block;
+          max-height: 32px;
+        }
+      }
+
+      .bar-buttons {
+        > button {
+          & + button {
+            margin-left: .8em;
+          }
+
+          .unread {
+            position: relative;
+
+            &:after {
+              display: inline-block;
+              position: absolute;
+              top: -3px;
+              right: 3px;
+              width: 6px;
+              height: 6px;
+              background-color: color($colors, danger);
+              content: "";
+              border-radius: 50%;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  > ion-content.content {
+    section > .header-activity {
+      position: relative;
+
+      h1 {
+        height: 21px;
+        margin: 0;
+        background: url("../assets/imgs/title_activity.png") no-repeat center left;
+        background-size: contain;
+        font-size: 1.4rem;
+        text-indent: -999em;
+      }
+
+      a {
+        position: absolute;
+        top: 1px;
+        right: 0;
+        color: color($text, light);
+
+        > ion-icon {
+          margin-left: 5px;
+        }
+      }
+    }
+
+    section > .header-partner {
+      text-align: center;
+
+      > h2 {
+        margin: 0;
+        font-weight: bold;
+        font-size: 1.8rem;
+
+        &:first-child {
+          margin-top: 0;
+        }
+      }
+
+      > p {
+        margin: 0;
+        margin-top: 4px;
+        font-size: 1.2rem;
+        color: color($text, light);
+      }
+    }
+
+    home-banner + home-statistics {
+      margin-top: -$content-gutter;
+    }
+  }
+}

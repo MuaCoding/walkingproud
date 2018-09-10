@@ -1,0 +1,9 @@
+<ng-container *ngIf="result?.data">
+  <event-list [data]="result.data"></event-list>
+
+  <load-more (loadMore)="doLoadMore($event)" *ngIf="result?.more"></load-more>
+</ng-container>
+
+<empty-state [completed]="result?.completed" middle *ngIf="!result?.data">
+  <p>没有相关的项目简报</p>
+</empty-state>

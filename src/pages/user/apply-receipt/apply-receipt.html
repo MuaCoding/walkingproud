@@ -1,0 +1,102 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>申请收据</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+
+  <ng-container *ngIf="invoice&&areaPicker">
+    <section>
+      <form name="apply-receipt" novalidate #form="ngForm" [class.submitted]="form.submitted" (ngSubmit)="process(form)">
+        <ion-list>
+
+          <ion-item [class.ng-invalid]="form.controls['type']?.invalid">
+            <ion-label stacked>发票类型</ion-label>
+            <div item-content>
+              <ion-multi-picker [multiPickerColumns]="type" cancelText="取消" doneText="确认" placeholder="请选择" name="type" [(ngModel)]="formData.type" required></ion-multi-picker>
+            </div>
+          </ion-item>
+
+          <ion-item [class.ng-invalid]="form.controls['title']?.invalid">
+            <ion-label stacked>发票抬头</ion-label>
+            <div item-content>
+              <ion-input type="text" placeholder="请输入发票抬头" name="title" [(ngModel)]="formData.title" required></ion-input>
+            </div>
+          </ion-item>
+
+          <ng-container *ngIf="formData.type==1">
+
+            <ion-item [class.ng-invalid]="form.controls['addressee']?.invalid">
+              <ion-label stacked>收件人</ion-label>
+              <div item-content>
+                <ion-input type="text" placeholder="请输入收件人姓名" name="addressee" [(ngModel)]="formData.addressee" required></ion-input>
+              </div>
+            </ion-item>
+
+            <ion-item [class.ng-invalid]="form.controls['phone']?.invalid">
+              <ion-label stacked>手机号码</ion-label>
+              <div item-content>
+                <ion-input type="tel" placeholder="请输入手机号码" name="phone" [(ngModel)]="formData.phone" required [pattern]="phone_pattern"></ion-input>
+              </div>
+            </ion-item>
+
+            <ion-item [class.ng-invalid]="form.controls['area']?.invalid">
+              <ion-label stacked>所在地区</ion-label>
+              <div item-content>
+                <ion-multi-picker [multiPickerColumns]="areaPicker" cancelText="取消" doneText="确认" placeholder="请选择您目前所在地区" name="area" [(ngModel)]="formData.area_code" (ionChange)="areaChange($event)" required></ion-multi-picker>
+              </div>
+            </ion-item>
+
+            <ion-item [class.ng-invalid]="form.controls['address']?.invalid">
+              <ion-label stacked>收件地址</ion-label>
+              <div item-content>
+                <ion-input type="text" placeholder="请输入收件地址" name="address" [(ngModel)]="formData.address" required></ion-input>
+              </div>
+            </ion-item>
+
+            <ion-item [class.ng-invalid]="form.controls['postcode']?.invalid">
+              <ion-label stacked>邮政编码</ion-label>
+              <div item-content>
+                <ion-input type="text" placeholder="请输入邮政编码" name="postcode" [(ngModel)]="formData.postcode"></ion-input>
+              </div>
+            </ion-item>
+
+          </ng-container>
+
+          <ion-item [class.ng-invalid]="form.controls['email']?.invalid" *ngIf="formData.type==2">
+            <ion-label stacked>电子邮件</ion-label>
+            <div item-content>
+              <ion-input type="email" placeholder="请输入电子邮件" name="email" [(ngModel)]="formData.email" required></ion-input>
+            </div>
+          </ion-item>
+
+          <ion-item>
+            <ion-label>开票金额</ion-label>
+            <div item-end>
+              <strong class="money">{{invoice.money}}</strong> 元
+            </div>
+          </ion-item>
+
+          <ion-item class="notes">
+            <ion-checkbox name="agree" [(ngModel)]="formData.agree" required></ion-checkbox>
+            <ion-label>我已阅读并同意 <a (click)="invoiceNoticeModal()"><strong>开票须知</strong></a></ion-label>
+          </ion-item>
+
+          <div padding-bottom padding-horizontal>
+            <button type="submit" ion-button block color="secondary" [disabled]="!formData.agree">提交申请</button>
+          </div>
+
+        </ion-list>
+      </form>
+    </section>
+  </ng-container>
+
+  <empty-state [completed]="completed" *ngIf="!(invoice&&areaPicker)">
+    <p>无法获取支付记录</p>
+  </empty-state>
+
+</ion-content>

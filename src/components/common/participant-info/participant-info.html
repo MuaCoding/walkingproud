@@ -1,0 +1,114 @@
+<form novalidate [formGroup]="info" #form="ngForm" [class.submitted]="form.submitted" (ngSubmit)="onSubmit(info)" disabled>
+  <button type="submit" #submit hidden></button>
+
+  <ion-list>
+
+    <ion-item [class.ng-invalid]="info.controls['name']?.invalid">
+      <ion-label stacked>姓名</ion-label>
+      <div item-content>
+        <ion-input type="text" placeholder="请务必填写真实姓名" formControlName="name"></ion-input>
+      </div>
+    </ion-item>
+
+    <ng-container formGroupName="card">
+
+      <ion-item [class.ng-invalid]="info.controls['card'].controls['type']?.invalid">
+        <ion-label stacked>证件类型</ion-label>
+        <div item-content>
+          <ion-multi-picker [multiPickerColumns]="credential" cancelText="取消" doneText="确认" placeholder="请根据实际情况选择" formControlName="type" (ionChange)="cardTypeChange($event)" [disabled]="disabled"></ion-multi-picker>
+        </div>
+      </ion-item>
+
+      <ion-item [class.ng-invalid]="info.controls['card'].controls['number']?.invalid">
+        <ion-label stacked>证件号码</ion-label>
+        <div item-content>
+          <ion-input type="text" placeholder="中国大陆公民请填写身份证号" formControlName="number" (ionChange)="cardNumberChange($event)"></ion-input>
+        </div>
+      </ion-item>
+
+    </ng-container>
+
+    <ion-item [class.ng-invalid]="info.controls['birthday']?.invalid">
+      <ion-label stacked>出生日期</ion-label>
+      <div item-content>
+        <ion-datetime displayFormat="YYYY-MM-DD" cancelText="取消" doneText="确认" placeholder="请确保与身份证的出生日期一致" formControlName="birthday"></ion-datetime>
+      </div>
+    </ion-item>
+
+    <ion-item [class.ng-invalid]="info.controls['sex']?.invalid">
+      <ion-label stacked>性别</ion-label>
+      <div item-content>
+        <ion-multi-picker [multiPickerColumns]="sex" cancelText="取消" doneText="确认" placeholder="请选择男性或女性" formControlName="sex" [disabled]="disabled"></ion-multi-picker>
+      </div>
+    </ion-item>
+
+    <ion-item [class.ng-invalid]="info.controls['mobile']?.invalid">
+      <ion-label stacked>联系电话</ion-label>
+      <div item-content>
+        <ion-input type="tel" placeholder="请填写本人联系电话" formControlName="mobile"></ion-input>
+      </div>
+    </ion-item>
+
+    <ion-item [class.ng-invalid]="info.controls['email']?.invalid">
+      <ion-label stacked>电子邮箱</ion-label>
+      <div item-content>
+        <ion-input type="email" placeholder="用于接收赛事消息或通知" formControlName="email"></ion-input>
+      </div>
+    </ion-item>
+
+    <ion-item [class.ng-invalid]="info.controls['area']?.invalid">
+      <ion-label stacked>所在地区</ion-label>
+      <div item-content>
+        <ion-multi-picker [multiPickerColumns]="areaPicker" cancelText="取消" doneText="确认" placeholder="请选择您目前所在地区" formControlName="area" (ionChange)="areaChange($event)" [disabled]="disabled" *ngIf="areaPicker"></ion-multi-picker>
+        <div class="async" *ngIf="!areaPicker">
+          <ion-spinner *ngIf="!completed"></ion-spinner>
+          <p *ngIf="completed">未能获取地区信息</p>
+        </div>
+      </div>
+    </ion-item>
+
+    <ion-item [class.ng-invalid]="info.controls['address']?.invalid">
+      <ion-label stacked>详细地址</ion-label>
+      <div item-content>
+        <ion-input type="text" placeholder="用于发放赛事物料等" formControlName="address"></ion-input>
+      </div>
+    </ion-item>
+
+    <ion-item [class.ng-invalid]="info.controls['tshirt']?.invalid">
+      <ion-label stacked>衣服尺码</ion-label>
+      <div item-content>
+        <ion-multi-picker [multiPickerColumns]="size" cancelText="取消" doneText="确认" placeholder="请选择适合您的尺码" formControlName="tshirt" [disabled]="disabled"></ion-multi-picker>
+      </div>
+    </ion-item>
+
+    <ng-container formGroupName="contact">
+
+      <ion-item [class.ng-invalid]="info.controls['contact'].controls['name']?.invalid">
+        <ion-label stacked>紧急联系人</ion-label>
+        <div item-content>
+          <ion-input type="text" placeholder="紧急联系人不可以是参赛者" formControlName="name"></ion-input>
+        </div>
+      </ion-item>
+
+      <ion-item [class.ng-invalid]="info.controls['contact'].controls['mobile']?.invalid">
+        <ion-label stacked>联系人电话</ion-label>
+        <div item-content>
+          <ion-input type="text" placeholder="不能与本人手机号码相同" formControlName="mobile"></ion-input>
+        </div>
+      </ion-item>
+
+      <ion-item [class.ng-invalid]="info.controls['contact'].controls['connection']?.invalid">
+        <ion-label stacked>与本人关系</ion-label>
+        <div item-content>
+          <ion-input type="text" placeholder="如：父子、母子、同事、朋友" formControlName="connection"></ion-input>
+        </div>
+      </ion-item>
+
+    </ng-container>
+
+    <div padding *ngIf="button">
+      <button type="submit" ion-button block color="secondary">{{button}}</button>
+    </div>
+
+  </ion-list>
+</form>

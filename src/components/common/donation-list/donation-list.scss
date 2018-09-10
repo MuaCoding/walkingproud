@@ -1,0 +1,119 @@
+donation-list {
+  > ion-list.list {
+    .item-block {
+      padding-right: $content-gutter;
+      border-bottom: $hairlines-width solid color($border, light);
+      align-items: flex-start;
+      flex-direction: column-reverse;
+
+      &:first-child {
+        border-top: none;
+      }
+
+      &:last-child {
+        border-bottom: none;
+      }
+
+      > .item-inner {
+        padding-right: 0;
+        border: none;
+        flex-direction: row-reverse;
+      }
+
+      .label {
+        margin-right: 0;
+
+        > header {
+          display: flex;
+          font-size: 1.3rem;
+          align-items: center;
+
+          > h2 {
+            @extend %textOverflow;
+
+            flex: 1;
+            min-width: 0;
+            margin: 0;
+            margin-right: 1em;
+            font-weight: bold;
+            font-size: 1.4rem;
+          }
+
+          > time {
+            color: color($text, light);
+          }
+        }
+
+        > p {
+          @extend %textOverflow;
+
+          margin-top: .5em;
+          font-size: 1.3rem;
+
+          > strong {
+            margin: 0 3px;
+            color: color($colors, secondary);
+          }
+
+          > span > b {
+            margin: 0 3px;
+            font-weight: normal;
+            color: inherit;
+          }
+        }
+      }
+
+      [item-end] {
+        margin-top: $content-gutter-half + 2px;
+        margin-left: 0;
+      }
+
+      > .content {
+        position: relative;
+        width: 100%;
+        margin: 0;
+        margin-bottom: $content-gutter;
+        border: 1px solid color($border, light);
+        border-radius: 3px;
+        white-space: normal;
+        text-align: justify;
+
+        > div {
+          position: relative;
+          z-index: 2;
+          padding: $content-gutter-half;
+          background-color: $background-color;
+          font-size: 1.3rem;
+        }
+
+        &:before, &:after {
+          display: inline-block;
+          position: absolute;
+          width: 0;
+          height: 0;
+          border: solid transparent;
+          border-top: none;
+          border-bottom-style: dashed;
+          vertical-align: middle;
+          content: "";
+        }
+
+        &:before {
+          z-index: 2;
+          top: -7px;
+          left: 16px;
+          border-width: 8px;
+          border-bottom-color: $background-color;
+        }
+
+        &:after {
+          z-index: 1;
+          top: -8px;
+          left: 14px;
+          border-width: 10px;
+          border-bottom-color: color($border, light);
+        }
+      }
+    }
+  }
+}

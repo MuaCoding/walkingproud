@@ -1,0 +1,60 @@
+my-progress {
+  display: flex;
+  overflow: hidden;
+  align-items: center;
+
+  > div {
+    flex: 1;
+    height: 3px;
+    background-color: color($border, normal);
+    border-radius: 5px;
+
+    > div {
+      max-width: 100%;
+      height: 100%;
+      background-color: color($colors, secondary);
+      border-radius: 5px;
+
+      > span {
+        display: none;
+      }
+    }
+  }
+
+  &.show-label {
+    height: 20px;
+
+    > div {
+      height: 5px;
+
+      > div {
+        position: relative;
+        min-width: 15px;
+        max-width: calc(100% - 17px);
+
+        > span {
+          display: block;
+          position: absolute;
+          top: 2px;
+          right: 0;
+          min-width: 32px;
+          padding: 0 5px;
+          border: 2px solid #fff;
+          background: inherit;
+          font-size: 1.1rem;
+          color: #fff;
+          border-radius: 10px;
+          transform: translate3d(50%, -50%, 0);
+        }
+
+        &.max {
+          max-width: 100%;
+
+          > span {
+            transform: translate3d(0, -50%, 0);
+          }
+        }
+      }
+    }
+  }
+}

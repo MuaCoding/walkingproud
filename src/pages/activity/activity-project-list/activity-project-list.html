@@ -1,0 +1,24 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>公益项目</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+
+  <ng-container *ngIf="project">
+
+    <section border>
+      <project-list [data]="project"></project-list>
+    </section>
+
+  </ng-container>
+
+  <empty-state [completed]="completed" *ngIf="!project">
+    <p>暂无公益项目</p>
+  </empty-state>
+
+</ion-content>

@@ -1,0 +1,220 @@
+page-user-donation-item {
+  > ion-content.content {
+    ion-navbar.toolbar {
+      position: absolute;
+
+      &.transparent {
+        > .toolbar-background {
+          background: linear-gradient(to bottom, rgba(#000, 0.1), transparent);
+        }
+      }
+    }
+
+    a {
+      @extend %detail-push;
+
+      padding-right: 14px;
+      background-size: 10px 10px;
+    }
+
+    section > .top {
+      display: flex;
+      padding: ($content-gutter * 5) $content-gutter ($content-gutter * 1.5);
+      background: url("../assets/imgs/bg_donation_item.jpg") no-repeat center center;
+      background-size: cover;
+      font-size: 1.3rem;
+      color: #fff;
+      align-items: center;
+
+      > .money {
+        flex: 1;
+
+        > p {
+          margin: 0;
+          margin-top: .5em;
+
+          strong {
+            color: #fff;
+            font-size: 2rem;
+          }
+        }
+      }
+
+      > .status {
+        margin-left: 1em;
+
+        > ion-icon {
+          margin-right: 5px;
+          transform: scale(1.2);
+        }
+      }
+    }
+
+    section > .detail {
+      padding: $content-gutter;
+
+      > header {
+        display: flex;
+        margin-bottom: $content-gutter;
+        font-size: 1.4rem;
+        align-items: center;
+
+        > h2 {
+          flex: 1;
+          margin: 0;
+          font-weight: bold;
+          font-size: inherit;
+        }
+
+        > .tag {
+          display: block;
+          width: 18px;
+          height: 18px;
+          margin-right: $content-gutter-half;
+          background-color: #000;
+          color: #fff;
+          font-size: 1.1rem;
+          line-height: 18px;
+          text-align: center;
+          border-radius: 50%;
+
+          &.people {
+            background-color: color($colors, primary);
+          }
+
+          &.group {
+            background-color: color($colors, secondary);
+          }
+
+          & + .tag {
+            display: none;
+          }
+        }
+
+        > a {
+          > ion-icon {
+            margin-left: 5px;
+          }
+        }
+      }
+
+      > .cover {
+        position: relative;
+        overflow: hidden;
+        border-radius: 5px;
+
+        & + .info {
+          margin-top: $content-gutter;
+        }
+
+        > .background {
+          position: absolute;
+          top: 0;
+          right: 0;
+          bottom: 0;
+          left: 0;
+          background: no-repeat center center;
+          background-size: cover;
+          transform: scale(1.2);
+          filter: blur(10px);
+        }
+
+        > .flex {
+          display: flex;
+          position: relative;
+          padding: $content-gutter;
+          background-color: rgba(#2f2f2f, 0.3);
+          align-items: center;
+
+          > .avatar {
+            width: 60px;
+            height: 60px;
+            overflow: hidden;
+            border: 3px solid color($border, normal);
+            border-radius: 50%;
+            box-shadow: 0 1px 5px rgba(#000, 0.1);
+
+            > img {
+              width: 100%;
+              height: 100%;
+            }
+          }
+
+          > .content {
+            flex: 1;
+            margin: $content-gutter-half;
+            color: #fff;
+
+            > h3 {
+              margin: 0;
+              font-size: inherit;
+            }
+
+            p {
+              margin: 0;
+              margin-top: .5em;
+            }
+          }
+
+          > button {
+            padding: 3px 1em;
+            font-size: 1.1rem;
+          }
+        }
+      }
+
+      > .info {
+        > div {
+          display: flex;
+          font-size: 1.3rem;
+          white-space: normal;
+          align-items: center;
+
+          & + div {
+            margin-top: .8em;
+          }
+
+          > label {
+            margin-right: 1em;
+            color: color($text, light);
+          }
+
+          > div {
+            flex: 1;
+            font-weight: bold;
+            text-align: right;
+          }
+        }
+      }
+
+      > .buttons {
+        display: flex;
+        margin-top: $content-gutter;
+
+        button {
+          flex: 1;
+          height: 2.8em;
+          margin: 0;
+          padding: 0 1em;
+          font-size: inherit;
+
+          & + button {
+            margin-left: 1em;
+          }
+
+          &.button-ios-light[disabled] {
+            opacity: .8;
+          }
+        }
+      }
+
+      > p {
+        text-align: center;
+
+        span {
+          color: color($text, light);
+        }
+      }
+    }
+  }
+}

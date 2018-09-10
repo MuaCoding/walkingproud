@@ -1,0 +1,17 @@
+page-team-create {
+  > ion-content.content {
+    section > ion-list.list {
+      .text-input[disabled] {
+        opacity: 1;
+      }
+
+      > .item-block {
+        &:last-child {
+          > .item-inner {
+            border-bottom: $hairlines-width solid color($border, light);
+          }
+        }
+      }
+    }
+  }
+}

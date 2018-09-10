@@ -1,0 +1,7 @@
+page-user-donation-list {
+  &:not(.ion-page) {
+    > ion-header.header {
+      display: none;
+    }
+  }
+}

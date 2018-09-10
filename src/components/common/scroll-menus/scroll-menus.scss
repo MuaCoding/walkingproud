@@ -1,0 +1,35 @@
+scroll-menus {
+  display: block;
+
+  > ion-slides.slides {
+    height: 44px;
+
+    > .swiper-container {
+      > .swiper-wrapper {
+        > .swiper-slide {
+          width: auto;
+          margin-right: -$content-gutter-half;
+          padding: $content-gutter-half;
+
+          &:last-child {
+            margin-right: 0;
+          }
+
+          > .slide-zoom {
+            padding: 0 .8em;
+            font-size: 1.3rem;
+            line-height: 2em;
+          }
+
+          &.active {
+            > .slide-zoom {
+              background-color: color($colors, primary);
+              color: #fff;
+              border-radius: 15px;
+            }
+          }
+        }
+      }
+    }
+  }
+}

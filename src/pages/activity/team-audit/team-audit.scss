@@ -1,0 +1,17 @@
+page-team-audit {
+  ion-header > .toolbar {
+    slide-tabs {
+      > ion-segment.segment {
+        > .segment-button {
+          &.segment-activated {
+            color: color($colors, secondary);
+
+            &:after {
+              background-color: color($colors, secondary);
+            }
+          }
+        }
+      }
+    }
+  }
+}

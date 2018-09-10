@@ -1,0 +1,32 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>个人信息</ion-title>
+    <ion-buttons end *ngIf="form">
+      <button ion-button color="primary" (click)="form.submit.click()">保存</button>
+    </ion-buttons>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+
+  <ng-container *ngIf="info">
+
+    <section>
+      <participant-info #form [data]="info" unrequired (process)="process($event)"></participant-info>
+    </section>
+
+    <div class="formTips">
+      <ul>
+        <li>报名参赛时，自动填充已保存的个人信息</li>
+        <li>报名参赛后，修改个人信息不影响参赛信息</li>
+      </ul>
+    </div>
+
+  </ng-container>
+
+  <empty-state [completed]="completed" *ngIf="!info"></empty-state>
+
+</ion-content>

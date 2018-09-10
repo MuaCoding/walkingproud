@@ -1,0 +1,26 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>受邀列表</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <ion-refresher (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+
+  <ng-container *ngIf="result?.data">
+    <invited-list [data]="result.data" (resize)="doRefresh()"></invited-list>
+  </ng-container>
+
+  <empty-state [completed]="result?.completed" *ngIf="!(result?.data)">
+    <p>暂无邀请</p>
+  </empty-state>
+
+  <ion-infinite-scroll (ionInfinite)="doInfinite($event)" [enabled]="result?.more">
+    <ion-infinite-scroll-content></ion-infinite-scroll-content>
+  </ion-infinite-scroll>
+</ion-content>

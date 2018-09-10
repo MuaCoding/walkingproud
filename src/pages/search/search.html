@@ -1,0 +1,95 @@
+<ion-header>
+
+  <ion-toolbar>
+    <ion-buttons start>
+      <button ion-button class="back-button back-button-ios show-back-button" navPop>
+        <ion-icon class="back-button-icon back-button-icon-ios" name="arrow-back"></ion-icon>
+      </button>
+    </ion-buttons>
+    <ion-searchbar placeholder="站内搜索" [(ngModel)]="keyword"></ion-searchbar>
+    <ion-buttons end>
+      <button ion-button (click)="search(keyword)">搜索</button>
+    </ion-buttons>
+  </ion-toolbar>
+
+  <!-- 显示条件：搜索后、有数据、slides加载完成 -->
+  <ion-toolbar *ngIf="!default&&result&&slides?.container">
+    <slide-tabs [slides]="slides" [index]="index" (change)="resize()"></slide-tabs>
+  </ion-toolbar>
+
+</ion-header>
+
+
+<ion-content #content>
+
+  <!-- 搜索前 -->
+  <ng-container *ngIf="default">
+
+    <section no-background padding *ngIf="history.length>0">
+      <header class="history">
+        <h2>搜索历史</h2>
+        <a (click)="clear()">
+          <ion-icon name="wp-trash"></ion-icon>
+        </a>
+      </header>
+
+      <ion-grid class="history">
+        <ion-row>
+          <ion-col *ngFor="let keyword of history">
+            <a (tap)="search(keyword)" (press)="remove(keyword)">{{keyword}}</a>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </section>
+
+  </ng-container>
+
+  <!-- 搜索后 -->
+  <ng-container *ngIf="!default">
+
+    <!-- 无结果、搜索中 -->
+    <div class="top" *ngIf="!result||!slides?.container">
+
+      <empty-state [completed]="completed">
+        <p>搜索不到相关内容</p>
+      </empty-state>
+
+    </div>
+
+    <ion-slides #slides class="slide-tabs">
+
+      <ion-slide title="公益项目">
+        <section border *ngIf="result?.project">
+          <project-list [data]="result.project"></project-list>
+        </section>
+
+        <empty-state [completed]="completed" *ngIf="!(result?.project)">
+          <p>搜索不到相关的公益项目</p>
+        </empty-state>
+      </ion-slide>
+
+      <ion-slide title="赛事活动">
+        <section border *ngIf="result?.activity">
+          <activity-list [data]="result.activity"></activity-list>
+        </section>
+
+        <empty-state [completed]="completed" *ngIf="!(result?.activity)">
+          <p>搜索不到相关的赛事活动</p>
+        </empty-state>
+      </ion-slide>
+
+      <ion-slide title="新闻资讯">
+        <section border *ngIf="result?.news">
+          <news-list [data]="result.news"></news-list>
+        </section>
+
+        <empty-state [completed]="completed" *ngIf="!(result?.news)">
+          <p>搜索不到相关的新闻资讯</p>
+        </empty-state>
+      </ion-slide>
+
+    </ion-slides>
+
+  </ng-container>
+
+</ion-content>

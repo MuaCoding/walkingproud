@@ -1,0 +1,7 @@
+page-team-charge {
+  > ion-content.content {
+    section > member-list {
+      border-bottom: $hairlines-width solid color($border, light);
+    }
+  }
+}

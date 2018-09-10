@@ -1,0 +1,228 @@
+page-activity-index {
+  > ion-content.content {
+    ion-toolbar.toolbar.transparent {
+      .bar-button {
+        height: 2.2em;
+        padding: 0 .8em;
+        background-color: rgba(#000, 0.2);
+        font-size: 1.3rem;
+        border-radius: 15px;
+
+        & + .bar-button {
+          margin-left: .5em;
+        }
+
+        .icon {
+          margin-right: 3px;
+        }
+      }
+    }
+
+    section > .cover {
+      position: relative;
+      height: 100vw;
+
+      > img {
+        display: block;
+        width: 100%;
+        height: 100%;
+      }
+
+      > .mask {
+        position: absolute;
+        overflow: hidden;
+        bottom: -1px;
+        left: 0;
+        right: 0;
+        height: 10vw;
+
+        &:after {
+          position: absolute;
+          bottom: calc(50% - 4px);
+          left: 0;
+          right: 0;
+          height: 20vw;
+          background: radial-gradient(transparent, transparent 49%, #fff 50%);
+          transform: scale3d(2, 2, 1);
+          content: "";
+        }
+      }
+    }
+
+    section > .info {
+      text-align: center;
+
+      > h2 {
+        margin: 0;
+        font-size: 2rem;
+      }
+
+      > p {
+        margin: 0;
+        margin-top: $content-gutter-half;
+        font-size: 1.3rem;
+        color: color($text, light);
+
+        > span {
+          padding: 0 3px;
+
+          > .icon {
+            margin-right: 3px;
+          }
+
+          > em {
+            & + em:before {
+              margin: 0;
+            }
+          }
+        }
+      }
+
+      > .tags {
+        margin-top: $content-gutter-half;
+
+        > span {
+          padding: 2px .5em;
+          background-color: rgba(color($colors, danger), 0.1);
+          font-weight: bold;
+          font-size: 1.3rem;
+          color: color($colors, danger);
+          border-radius: 3px;
+        }
+      }
+
+      > .buttons {
+        margin-top: $content-gutter;
+        padding: $content-gutter-half 0;
+
+        > button {
+          width: 125px;
+          height: 40px;
+          padding: 0;
+          font-size: 1.4rem;
+          box-shadow: 0 3px 10px rgba(color($colors, primary), 0.2);
+
+          &.button-ios-secondary {
+            box-shadow: 0 3px 10px rgba(color($colors, secondary), 0.2);
+          }
+
+          &[style~='background-image:'] {
+            background: transparent no-repeat center center;
+            background-size: cover;
+            border-radius: 0;
+            box-shadow: none;
+
+            &.activated {
+              opacity: .8;
+            }
+          }
+
+          & + button {
+            margin-left: 1em;
+          }
+        }
+      }
+    }
+
+    section > ion-grid.navigation {
+      padding: $content-gutter-half;
+      text-align: center;
+
+      .col {
+        padding: $content-gutter-half;
+        line-height: 1;
+
+        > a {
+          display: inline-block;
+
+          &.activated {
+            opacity: .8;
+          }
+        }
+      }
+
+      .icon {
+        width: 35px;
+        height: 35px;
+        padding: $content-gutter-half;
+        font-size: 1.8rem;
+        border-radius: 50%;
+
+        &.first {
+          background-color: #e6f9e5;
+          color: #09c200;
+        }
+
+        &.second {
+          background-color: #fef7e8;
+          color: #ff7617;
+        }
+
+        &.third {
+          background-color: #f7e6fc;
+          color: #b309de;
+        }
+
+        &.fourth {
+          background-color: #e6f3fe;
+          color: #008aff;
+        }
+
+        &[style~='background-image:'] {
+          background: transparent no-repeat center center;
+          background-size: cover;
+          border-radius: 0;
+
+          &:before{
+            content: '';
+          }
+        }
+      }
+
+      h2 {
+        margin: 0;
+        margin-top: $content-gutter-half;
+        font-weight: bold;
+        font-size: 1.3rem;
+      }
+    }
+
+    section > header {
+      text-align: center;
+
+      > h2 {
+        margin: 0;
+        font-weight: bold;
+        font-size: 1.8rem;
+
+        &:first-child {
+          margin-top: 0;
+        }
+      }
+
+      > p {
+        margin: 0;
+        margin-top: 4px;
+        font-size: 1.2rem;
+        color: color($text, light);
+      }
+    }
+
+    section > .toolbar {
+      slide-tabs {
+        > ion-segment.segment {
+          > .segment-button {
+            &.segment-activated {
+              color: color($colors, secondary);
+
+              &:after {
+                width: 4em;
+                background-color: color($colors, secondary);
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

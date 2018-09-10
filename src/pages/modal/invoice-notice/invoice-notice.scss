@@ -1,0 +1,18 @@
+page-invoice-notice {
+  section > div {
+    overflow: auto;
+    max-height: 60vh;
+
+    > p {
+      line-height: 1.6em;
+
+      &:first-child {
+        margin-top: 0;
+      }
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+  }
+}

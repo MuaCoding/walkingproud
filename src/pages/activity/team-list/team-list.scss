@@ -1,0 +1,24 @@
+page-team-list {
+  ion-content.content {
+    ion-searchbar.searchbar {
+      padding: 12px $content-gutter;
+      border: none;
+      background-color: $background-color;
+
+      .searchbar-input {
+        height: 3.6rem;
+        border: $hairlines-width solid color($border, light);
+        border-radius: 15px;
+      }
+
+      .searchbar-search-icon {
+        top: 11px;
+        left: 11px;
+      }
+    }
+
+    form + empty-state {
+      height: calc(100% - 60px);
+    }
+  }
+}

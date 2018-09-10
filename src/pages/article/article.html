@@ -1,0 +1,29 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>{{title}}</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+
+  <ng-container *ngIf="article">
+
+    <section border padding>
+      <div class="article">
+        <h2>{{article.title}}</h2>
+        <p><time>{{article.created_at | date:'yyyy-MM-dd HH:mm'}}</time></p>
+        <hr>
+        <div class="content" [innerHTML]="article.content | sanitizeHtml"></div>
+      </div>
+    </section>
+
+  </ng-container>
+
+  <empty-state [completed]="completed" *ngIf="!article">
+    <p>未找到{{title}}</p>
+  </empty-state>
+
+</ion-content>

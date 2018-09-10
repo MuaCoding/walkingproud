@@ -1,0 +1,26 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>联系我们</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+
+  <ng-container *ngIf="contactUs">
+
+    <section border padding>
+      <div class="article">
+        <div class="content" [innerHTML]="contactUs | sanitizeHtml"></div>
+      </div>
+    </section>
+
+  </ng-container>
+
+  <empty-state [completed]="completed" *ngIf="!contactUs">
+    <p>暂无数据</p>
+  </empty-state>
+
+</ion-content>

@@ -1,0 +1,117 @@
+user-donation-list {
+  > ion-list.list {
+    padding: $content-gutter;
+
+    > .item-block {
+      padding: 0;
+      background-color: #fff;
+      border: $hairlines-width solid color($border, light);
+      border-radius: 3px;
+
+      & + .item {
+        margin-top: $content-gutter;
+      }
+
+      > .item-inner {
+        padding: 0;
+        border: none;
+      }
+
+      .label {
+        margin: 0;
+        font-size: 1.4rem;
+
+        > header {
+          display: flex;
+          padding: $content-gutter;
+          border-bottom: $hairlines-width solid color($border, light);
+          font-size: 1.4rem;
+          align-items: center;
+
+          > h2 {
+            flex: 1;
+            margin: 0;
+            font-weight: bold;
+            font-size: inherit;
+          }
+
+          > .tag {
+            display: block;
+            width: 18px;
+            height: 18px;
+            margin-right: $content-gutter-half;
+            background-color: #000;
+            color: #fff;
+            font-size: 1.1rem;
+            line-height: 18px;
+            text-align: center;
+            border-radius: 50%;
+
+            &.people {
+              background-color: color($colors, primary);
+            }
+
+            &.group {
+              background-color: color($colors, secondary);
+            }
+
+            & + .tag {
+              display: none;
+            }
+          }
+
+          > .money {
+            color: color($text, light);
+
+            > strong {
+              color: color($colors, secondary);
+            }
+          }
+        }
+
+        > .info {
+          padding: $content-gutter;
+
+          > div {
+            display: flex;
+            font-size: 1.3rem;
+            white-space: normal;
+            align-items: center;
+
+            & + div {
+              margin-top: .5em;
+            }
+
+            > label {
+              margin-right: 1em;
+              color: color($text, light);
+            }
+
+            > div {
+              flex: 1;
+              font-weight: bold;
+              text-align: right;
+            }
+          }
+        }
+
+        > .buttons {
+          display: flex;
+          border-top: $hairlines-width solid color($border, light);
+
+          > button {
+            flex: 1;
+            height: 2.8em;
+            margin: 0;
+            padding: 0 1em;
+            font-size: inherit;
+
+            & + button {
+              border-left: $hairlines-width solid color($border, light);
+            }
+          }
+        }
+      }
+    }
+  }
+}

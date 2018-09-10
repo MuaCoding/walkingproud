@@ -1,0 +1,19 @@
+<header>
+  <ion-toolbar>
+    <ion-title>开票须知</ion-title>
+  </ion-toolbar>
+</header>
+
+<section padding *ngIf="invoiceNotice">
+  <div [innerHTML]="invoiceNotice | sanitizeHtml"></div>
+</section>
+
+<empty-state [completed]="completed" middle *ngIf="!invoiceNotice">
+  <p>暂无数据</p>
+</empty-state>
+
+<footer>
+  <ion-toolbar>
+    <button ion-button clear full color="secondary" (click)="dismiss()">我已了解</button>
+  </ion-toolbar>
+</footer>

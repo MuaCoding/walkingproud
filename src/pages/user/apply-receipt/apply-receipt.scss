@@ -1,0 +1,44 @@
+page-apply-receipt {
+  > ion-content.content {
+    section > form {
+      ion-list.list {
+        > .item-block {
+          padding-right: $content-gutter;
+          font-size: 1.4rem;
+
+          > .item-inner {
+            padding-right: 0;
+          }
+
+          a {
+            position: relative;
+          }
+
+          .money {
+            color: color($colors, secondary);
+          }
+
+          &.notes {
+            > ion-checkbox.checkbox {
+              margin-right: $content-gutter-half;
+
+              > .checkbox-icon {
+                width: 15px;
+                height: 15px;
+
+                > .checkbox-inner {
+                  top: 1px;
+                  left: 5px;
+                }
+              }
+            }
+
+            > .item-inner {
+              border: none;
+            }
+          }
+        }
+      }
+    }
+  }
+}

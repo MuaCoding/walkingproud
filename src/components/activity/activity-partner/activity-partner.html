@@ -1,0 +1,7 @@
+<ng-container *ngIf="partner">
+  <partner [data]="partner"></partner>
+</ng-container>
+
+<empty-state [completed]="completed" middle *ngIf="!partner">
+  <p>没有相关的合作单位</p>
+</empty-state>

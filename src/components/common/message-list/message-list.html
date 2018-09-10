@@ -1,0 +1,11 @@
+<ion-list>
+
+  <ion-item *ngFor="let item of data; trackBy: trackByFn;">
+    <h2 [class.unread]="item.status==0">{{item.title}}</h2>
+    <div>{{item.description}}</div>
+    <p>
+      <span>{{item.type}}</span><time>{{item.created_at | myDate:"yyyy-MM-dd HH:mm":"MM-dd HH:mm"}}</time>
+    </p>
+  </ion-item>
+
+</ion-list>

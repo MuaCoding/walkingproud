@@ -1,0 +1,49 @@
+<ion-list>
+
+  <ion-item *ngFor="let item of data; trackBy: trackByFn;">
+    <div class="image">
+      <div>
+        <img [my-src]="item.activity.picture">
+      </div>
+      <div class="mask">
+        <header (click)="gotoActivity(item)">
+          <h1>{{item.activity.name}}</h1>
+        </header>
+      </div>
+      <span class="tag status-1" *ngIf="item.activity.status==1"><ion-icon name="wp-brush"></ion-icon>报名中</span>
+      <span class="tag status-2" *ngIf="item.activity.status==2"><ion-icon name="wp-flag"></ion-icon>进行中</span>
+      <span class="tag status-3" *ngIf="item.activity.status==3"><ion-icon name="wp-delete"></ion-icon>已结束</span>
+    </div>
+
+    <ng-container *ngIf="item.team">
+      <div class="info">
+        <div>
+          <label>队伍名称</label>
+          <div><em>{{item.team.name}}</em></div>
+        </div>
+        <div>
+          <label>队伍信息</label>
+          <div>
+            <em>{{item.team.type}}</em>
+            <em *ngIf="item.team.mark">{{item.team.mark}}</em>
+            <em *ngIf="!item.team.mark">未生成编号</em>
+            <em>{{item.team.member_count}}人</em></div>
+        </div>
+        <div>
+          <my-progress class="show-label" [value]="item.team.money.existing" [max]="item.team.money.target"></my-progress>
+        </div>
+      </div>
+    </ng-container>
+    <ng-container *ngIf="!item.team">
+      <div class="tips">您还没有加入队伍，快去队伍列表看看吧~</div>
+    </ng-container>
+
+    <div class="buttons">
+      <button ion-button full clear *ngIf="!item.team" (click)="gotoTeamList(item)">队伍列表</button>
+      <button ion-button full clear *ngIf="item.team" (click)="gotoTeamItem(item)">队伍主页</button>
+      <button ion-button full clear *ngIf="item.team?.mileage>0">完赛证书</button>
+      <button ion-button full clear navPush="user-activity-item" [navParams]="{id:item.id}">参赛信息</button>
+    </div>
+  </ion-item>
+
+</ion-list>

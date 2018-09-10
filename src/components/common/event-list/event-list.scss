@@ -1,0 +1,20 @@
+event-list {
+  > ion-list.list {
+    > .item-block {
+      &:first-child {
+        border-top: none;
+      }
+
+      &:last-child {
+        border-bottom: none;
+      }
+    }
+
+    h2 {
+      @extend %textOverflow;
+
+      font-weight: bold;
+      font-size: 1.4rem;
+    }
+  }
+}

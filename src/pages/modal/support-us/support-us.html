@@ -1,0 +1,26 @@
+<header>
+  <ion-toolbar>
+    <ion-title>支持我们</ion-title>
+    <ion-buttons end>
+      <button ion-button (click)="dismiss()">
+        <ion-icon name="close"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-toolbar>
+</header>
+
+<section>
+  <ion-list>
+    <ion-list-header>队伍</ion-list-header>
+    <member-list choice [data]="[team]" [(selected)]="selected"></member-list>
+
+    <ion-list-header>队员</ion-list-header>
+    <member-list choice [data]="team.members" [(selected)]="selected"></member-list>
+  </ion-list>
+</section>
+
+<footer>
+  <ion-toolbar>
+    <button ion-button full color="secondary" (click)="process(selected)">前往支付</button>
+  </ion-toolbar>
+</footer>

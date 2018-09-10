@@ -1,0 +1,40 @@
+<ion-list>
+
+  <ion-item *ngFor="let item of data">
+    <header>
+      <span class="tag people" *ngIf="item.participant"><ion-icon name="wp-people"></ion-icon></span>
+      <span class="tag group"><ion-icon name="wp-group"></ion-icon></span>
+      <h2 *ngIf="item.type==0">捐赠给{{item.participant?"个人":"队伍"}}</h2>
+      <h2 *ngIf="item.type==1">缴纳报名费</h2>
+      <span class="money"><strong>{{item.money | number:'0.0-2'}}</strong> 元</span>
+    </header>
+    <div class="info">
+      <div>
+        <label>所属活动</label>
+        <div><em>{{item.activity.name}}</em></div>
+      </div>
+      <div>
+        <label>支付对象</label>
+        <div><em>{{item.team.name}}</em><em *ngIf="item.participant">{{item.participant.name}}</em></div>
+      </div>
+      <div *ngIf="item.success_time">
+        <label>支付时间</label>
+        <div><time>{{item.success_time | date:'yyyy-MM-dd HH:mm:ss'}}</time></div>
+      </div>
+      <div *ngIf="!item.success_time">
+        <label>下单时间</label>
+        <div><time>{{item.created_at | date:'yyyy-MM-dd HH:mm:ss'}}</time></div>
+      </div>
+    </div>
+    <div class="buttons">
+      <button ion-button full clear navPush="user-donation-item" [navParams]="{id:item.id}">支付详情</button>
+      <button ion-button full clear color="danger" (click)="pay(item)" *ngIf="item.status==0">立即支付</button>
+      <ng-container *ngIf="item.status==1">
+        <button ion-button full clear color="danger" navPush="apply-receipt" [navParams]="{id:item.id}" *ngIf="item.invoice==null">申请收据</button>
+        <button ion-button full clear color="dark" disabled *ngIf="item.invoice==0">待处理</button>
+        <button ion-button full clear color="dark" disabled *ngIf="item.invoice==1">已开票</button>
+      </ng-container>
+    </div>
+  </ion-item>
+
+</ion-list>

@@ -1,0 +1,158 @@
+// Ionic Variables and Theming. For more info, please see:
+// http://ionicframework.com/docs/theming/
+
+// Font path is used to include ionicons,
+// roboto, and noto sans fonts
+$font-path: "../assets/fonts";
+
+
+// The app direction is used to include
+// rtl styles in your app. For more info, please see:
+// http://ionicframework.com/docs/theming/rtl-support/
+$app-direction: ltr;
+
+
+@import "ionic.globals";
+
+
+// Named Color Variables
+// --------------------------------------------------
+// Named colors makes it easy to reuse colors on various components.
+// It's highly recommended to change the default colors
+// to match your app's branding. Ionic uses a Sass map of
+// colors so you can add, rename and remove colors as needed.
+// The "primary" color is the only required color in the map.
+
+$colors: (
+  primary:    #228aff,
+  secondary:  #ff8f22,
+  danger:     #fe2f34,
+  light:      #f9f9f9,
+  dark:       #222222
+);
+
+$text: (
+  light:      #a4abb0,
+  normal:     #222233
+);
+
+$border: (
+  light:      #eeeeee,
+  normal:     #dddddd
+);
+
+
+// Shared Variables
+// --------------------------------------------------
+// To customize the look and feel of this app, you can override
+// the Sass variables found in Ionic's source scss files.
+// To view all the possible Ionic variables, see:
+// http://ionicframework.com/docs/theming/overriding-ionic-variables/
+
+$background-color: color($colors, light);
+$text-color: color($text, normal);
+$content-gutter: 16px;
+$content-gutter-double: $content-gutter * 2;
+$content-gutter-half: $content-gutter / 2;
+
+
+// App iOS Variables
+// --------------------------------------------------
+// iOS only Sass variables can go here
+
+$tabs-ios-background: #fff;
+$tabs-ios-border-color: color($border, light);
+$tabs-ios-tab-text-color: $text-color;
+$tabs-ios-tab-text-color-active: $text-color;
+$tabs-ios-tab-icon-size: 2rem;
+$tabs-ios-tab-icon-color: #535658;
+
+$toolbar-ios-background: #fff;
+$toolbar-ios-border-color: color($border, light);
+$toolbar-ios-button-font-size: 1.4rem;
+$toolbar-ios-button-color: $text-color;
+$toolbar-ios-title-font-size: 1.6rem;
+$toolbar-ios-title-text-color: $text-color;
+
+$list-ios-margin-bottom: 0;
+$list-ios-background-color: transparent;
+$list-ios-border-color: color($border, light);
+$item-ios-padding-top: $content-gutter;
+$item-ios-padding-bottom: $content-gutter;
+$item-ios-body-text-font-size: 1.5rem;
+$item-ios-paragraph-margin-top: .5em;
+$item-ios-paragraph-font-size: 1.2rem;
+$item-ios-paragraph-text-color: color($text, light);
+$item-ios-avatar-size: 48px;
+$item-ios-detail-push-color: color($border, normal);
+
+$note-ios-color: color($text, light);
+
+$button-ios-margin-top: 0;
+$button-ios-margin-end: 0;
+$button-ios-margin-bottom: 0;
+$button-ios-margin-start: 0;
+$button-ios-font-size: 1.5rem;
+
+$text-input-placeholder-color: color($text, light);
+$text-input-ios-margin-top: $content-gutter - 4px;
+$text-input-ios-margin-bottom: $text-input-ios-margin-top;
+
+$datetime-ios-padding-top: $text-input-ios-margin-top;
+$datetime-ios-padding-end: ($content-gutter / 2);
+$datetime-ios-padding-bottom: $text-input-ios-margin-bottom;
+$datetime-ios-padding-start: 0;
+
+$multi-picker-ios-padding-top: $datetime-ios-padding-top;
+$multi-picker-ios-padding-right: $datetime-ios-padding-end;
+$multi-picker-ios-padding-bottom: $datetime-ios-padding-bottom;
+$multi-picker-ios-padding-left: $datetime-ios-padding-start;
+
+$picker-ios-background-color: #fff;
+
+$action-sheet-ios-border-radius: 10px;
+$action-sheet-ios-title-padding: $content-gutter;
+$action-sheet-ios-title-font-size: 1.4rem;
+$action-sheet-ios-button-min-height: auto;
+$action-sheet-ios-button-padding: $content-gutter;
+$action-sheet-ios-button-font-size: 1.5rem;
+
+
+// App Material Design Variables
+// --------------------------------------------------
+// Material Design only Sass variables can go here
+
+
+
+
+// App Windows Variables
+// --------------------------------------------------
+// Windows only Sass variables can go here
+
+
+
+
+// App Theme
+// --------------------------------------------------
+// Ionic apps can have different themes applied, which can
+// then be future customized. This import comes last
+// so that the above variables are used and Ionic's
+// default are overridden.
+
+@import "ionic.theme.default";
+
+
+// Ionicons
+// --------------------------------------------------
+// The premium icon font for Ionic. For more info, please see:
+// http://ionicframework.com/docs/ionicons/
+
+@import "ionic.ionicons";
+
+
+// Fonts
+// --------------------------------------------------
+
+@import "roboto";
+@import "noto-sans";
+@import "iconfont";

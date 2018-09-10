@@ -1,0 +1,14 @@
+<div *ngIf="completed">
+  <div class="image">
+    <ng-content select="[image]"></ng-content>
+    <img src="../assets/imgs/empty-state.png" style="width: 80px;" />
+  </div>
+  <ng-content></ng-content>
+</div>
+
+<div *ngIf="!completed">
+  <div class="image">
+    <ion-spinner></ion-spinner>
+  </div>
+  <p>正在加载中...</p>
+</div>

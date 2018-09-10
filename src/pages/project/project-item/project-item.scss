@@ -1,0 +1,89 @@
+page-project-item {
+  > ion-content.content {
+    section > div.slides {
+      .image {
+        padding-top: 56.25%;
+      }
+    }
+
+    section > div.info {
+      p {
+        color: color($text, light);
+      }
+
+      > h2 {
+        margin: 0;
+        font-weight: bold;
+        font-size: 1.6rem;
+      }
+
+      > p {
+        margin: 0;
+        margin-top: .6em;
+        font-size: 1.3rem;
+
+        > span {
+          display: inline-block;
+          padding: 1px 6px;
+          background-color: rgba(#000, 0.1);
+          font-size: 1.2rem;
+          color: $text-color;
+          border-radius: 3px;
+        }
+      }
+
+      > .flex {
+        display: flex;
+        align-items: center;
+        flex-wrap: wrap;
+
+        .tag {
+          flex: 2 0 51%;
+          margin-top: $content-gutter-half;
+
+          > span {
+            display: inline-block;
+            padding: 1px 6px;
+            background-color: rgba(#000, 0.1);
+            font-size: 1.2rem;
+            color: $text-color;
+            border-radius: 3px;
+          }
+        }
+
+        > my-progress {
+          flex: 1 1 51%;
+          margin-top: $content-gutter-half;
+          margin-right: $content-gutter-half;
+        }
+
+        > p {
+          margin: 0;
+          margin-top: $content-gutter-half;
+          font-size: 1.2rem;
+
+          strong {
+            margin: 0 3px;
+            color: color($colors, secondary);
+          }
+        }
+      }
+    }
+
+    section .content {
+      padding: $content-gutter;
+      font-size: 1.4rem;
+      line-height: 1.6em;
+
+      > p {
+        &:first-child {
+          margin-top: 0;
+        }
+      }
+    }
+
+    section empty-state {
+      min-height: 200px;
+    }
+  }
+}

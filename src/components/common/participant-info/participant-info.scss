@@ -1,0 +1,35 @@
+participant-info {
+  display: block;
+
+  > form > ion-list.list {
+    .text-input[disabled], .datetime-disabled, .item-datetime-disabled ion-label, .multi-picker-disabled, .item-multi-picker-disabled ion-label {
+      opacity: 1;
+    }
+
+    .datetime-disabled, .multi-picker-disabled {
+      background: none;
+    }
+
+    > .item-block {
+      [item-content] {
+        > .async {
+          display: flex;
+          margin: $content-gutter-half;
+          margin-left: 0;
+          height: 20px;
+          align-items: center;
+
+          > .spinner {
+            height: 100%;
+          }
+
+          > p {
+            margin: 0;
+            font-size: inherit;
+            color: color($colors, danger);
+          }
+        }
+      }
+    }
+  }
+}

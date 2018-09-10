@@ -1,0 +1,34 @@
+partner {
+  > ul {
+    > li {
+      & + li {
+        margin-top: $content-gutter;
+      }
+
+      > h3 {
+        margin-bottom: .5em;
+        font-size: 1.4rem;
+
+        &:first-child {
+          margin-top: 0;
+        }
+      }
+
+      > div {
+        display: flex;
+        margin: -5px;
+        flex-wrap: wrap;
+
+        > a {
+          display: block;
+          margin: 5px;
+
+          > img {
+            display: block;
+            height: 45px;
+          }
+        }
+      }
+    }
+  }
+}

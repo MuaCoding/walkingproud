@@ -1,0 +1,21 @@
+news-list {
+  > ion-list.list {
+    > .item-block {
+      ion-thumbnail {
+        > img {
+          width: 100px;
+          height: 56px;
+          border-radius: 3px;
+        }
+      }
+
+      .label {
+        > h2 {
+          @include linesClamp;
+
+          font-size: 1.5rem;
+        }
+      }
+    }
+  }
+}

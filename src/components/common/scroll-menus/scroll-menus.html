@@ -1,0 +1,3 @@
+<ion-slides slidesPerView="auto">
+  <ion-slide *ngFor="let title of titles; let i = index; trackBy: trackByFn;" [class.active]="index==i" (click)="selectChanged(i)">{{title}}</ion-slide>
+</ion-slides>

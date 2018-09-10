@@ -1,0 +1,102 @@
+invited-list {
+  > ion-list.list {
+    > div {
+      & + div {
+        margin-top: $content-gutter;
+      }
+
+      > .list-header {
+        min-height: auto;
+        border-bottom: none;
+
+        .label {
+          margin: $content-gutter-half 0;
+          font-size: 1.3rem;
+          text-align: center;
+          color: color($text, light);
+          letter-spacing: 0;
+        }
+      }
+
+      > .item-block {
+        padding-right: $content-gutter;
+        border: $hairlines-width solid color($border, light);
+        border-radius: 3px;
+        background-color: #fff;
+        align-items: flex-start;
+
+        > ion-avatar {
+          margin: $content-gutter 0;
+          margin-right: $content-gutter;
+
+          > img {
+            border: $hairlines-width solid color($border, normal);
+          }
+        }
+
+        > .item-inner {
+          display: flex;
+          padding: 0;
+          border: none;
+          align-items: center;
+          justify-content: center;
+
+          .label {
+            position: relative;
+            margin-right: 0;
+
+            > h2 {
+              @extend %textOverflow;
+
+              margin: 0;
+              font-weight: bold;
+              font-size: 1.5rem;
+            }
+
+            > p {
+              @extend %textOverflow;
+
+              margin: 0;
+              margin-top: .3em;
+
+              strong {
+                margin: 0 5px;
+                color: color($colors, dark);
+              }
+
+              &:last-of-type {
+                margin-top: .5em;
+              }
+            }
+
+            > .buttons {
+              display: flex;
+              margin-top: .8em;
+              justify-content: flex-end;
+
+              button {
+                height: 2em;
+                padding: 0 .8em;
+                border-color: color($border, light);
+                font-size: 1.3rem;
+
+                & + button {
+                  margin-left: 1em;
+                }
+
+                &.button-outline-ios-light {
+                  color: color($text, light);
+                }
+              }
+            }
+          }
+
+          > ion-note.note {
+            margin-right: 0;
+            font-size: 1.3rem;
+          }
+        }
+      }
+    }
+  }
+}

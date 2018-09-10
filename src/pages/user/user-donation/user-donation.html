@@ -1,0 +1,36 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>我的支付</ion-title>
+  </ion-navbar>
+
+  <ion-toolbar>
+    <slide-tabs [slides]="slides" [index]="index" (change)="content.resize()" *ngIf="slides?.container"></slide-tabs>
+  </ion-toolbar>
+
+</ion-header>
+
+
+<ion-content #content>
+
+  <ion-slides #slides class="slide-tabs">
+
+    <ion-slide title="全部">
+      <page-user-donation-list [params]="{type:0}"></page-user-donation-list>
+    </ion-slide>
+
+    <ion-slide title="待支付">
+      <page-user-donation-list [params]="{type:1}"></page-user-donation-list>
+    </ion-slide>
+
+    <ion-slide title="未开票">
+      <page-user-donation-list [params]="{type:2}"></page-user-donation-list>
+    </ion-slide>
+
+    <ion-slide title="已开票">
+      <page-user-donation-list [params]="{type:3}"></page-user-donation-list>
+    </ion-slide>
+
+  </ion-slides>
+
+</ion-content>

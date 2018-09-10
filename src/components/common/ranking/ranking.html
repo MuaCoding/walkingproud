@@ -1,0 +1,11 @@
+<ion-list no-lines>
+
+  <ion-item *ngFor="let item of data; trackBy: trackByFn;">
+    <ion-avatar item-start>
+      <img [my-src]="item.picture" err-src="../assets/imgs/df-user.jpg">
+    </ion-avatar>
+    <h2>{{item.name}}</h2>
+    <div item-end><em>{{item.money | number:'0.0-2'}}</em> 元</div>
+  </ion-item>
+
+</ion-list>

@@ -1,0 +1,26 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>新的成员</ion-title>
+  </ion-navbar>
+
+  <ion-toolbar>
+    <slide-tabs [slides]="slides" [index]="index" (change)="content.resize()" *ngIf="slides?.container"></slide-tabs>
+  </ion-toolbar>
+
+</ion-header>
+
+
+<ion-content #content>
+  <ion-slides #slides class="slide-tabs">
+
+    <ion-slide title="等待审核">
+      <page-team-audit-list [params]="{type:1}"></page-team-audit-list>
+    </ion-slide>
+
+    <ion-slide title="审核完成">
+      <page-team-audit-list [params]="{type:2}"></page-team-audit-list>
+    </ion-slide>
+
+  </ion-slides>
+</ion-content>

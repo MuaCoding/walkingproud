@@ -1,0 +1,21 @@
+page-team-recommend {
+  ion-footer.footer {
+    > ion-toolbar.toolbar {
+      padding: 0;
+
+      .toolbar-content {
+        display: flex;
+
+        > button {
+          flex: 1;
+          height: 44px;
+          font-size: inherit;
+
+          & + button {
+            border-left: $hairlines-width solid color($border, light);
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,37 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>推荐成员</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+
+  <ng-container *ngIf="recommend">
+
+    <section border>
+      <member-list [data]="recommend">
+        <ng-template #itemEnd let-item="item">
+          <button ion-button small (click)="select(item)">邀请</button>
+        </ng-template>
+      </member-list>
+    </section>
+
+  </ng-container>
+
+  <empty-state [completed]="completed" *ngIf="!recommend">
+    <p>暂无平台推荐成员</p>
+  </empty-state>
+
+</ion-content>
+
+
+<ion-footer *ngIf="recommend">
+
+  <ion-toolbar>
+    <button ion-button full color="secondary" (click)="doRefresh()">换一批</button>
+  </ion-toolbar>
+
+</ion-footer>

@@ -1,0 +1,107 @@
+<ion-header *ngIf="!donation">
+
+  <ion-navbar>
+    <ion-title>支付详情</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+
+  <ion-navbar class="transparent" *ngIf="donation">
+    <ion-title>支付详情</ion-title>
+  </ion-navbar>
+
+  <ng-container *ngIf="donation">
+    <section border>
+
+      <div class="top">
+        <div class="money">
+          <label>支付金额</label>
+          <p><strong>{{donation.money | number:'0.2-2'}}</strong> 元</p>
+        </div>
+        <div class="status" [ngSwitch]="donation.status">
+          <ng-container *ngSwitchCase="-1">
+            <ion-icon name="wp-delete"></ion-icon><em>取消支付</em>
+          </ng-container>
+          <ng-container *ngSwitchCase="0">
+            <ion-icon name="wp-time"></ion-icon><em>等待支付</em>
+          </ng-container>
+          <ng-container *ngSwitchCase="1">
+            <ion-icon name="wp-success"></ion-icon><em>支付完成</em>
+          </ng-container>
+          <ng-container *ngSwitchDefault>
+            <ion-icon name="wp-feedback"></ion-icon><em>未知状态</em>
+          </ng-container>
+        </div>
+      </div>
+
+      <div class="detail">
+        <header>
+          <span class="tag people" *ngIf="donation.participant"><ion-icon name="wp-people"></ion-icon></span>
+          <span class="tag group"><ion-icon name="wp-group"></ion-icon></span>
+          <h2 *ngIf="donation.type==0">捐赠给{{donation.participant?"个人":"队伍"}}</h2>
+          <h2 *ngIf="donation.type==1">缴纳报名费</h2>
+          <a (click)="openCertificate(donation)" *ngIf="donation.type==0&&donation.status==1">捐赠证书</a>
+        </header>
+        <div class="cover">
+          <div class="background" [style.background-image]="utility.background(donation.team.picture)"></div>
+          <div class="flex">
+            <div class="avatar">
+              <img [my-src]="donation.team.picture" err-src="../assets/imgs/df-logo.jpg">
+            </div>
+            <div class="content">
+              <h3>{{donation.team.name}}</h3>
+              <p><em>{{donation.team.type}}</em><em>{{donation.team.member_count}}人</em></p>
+            </div>
+            <button ion-button round color="secondary" (click)="gotoTeam(donation.activity.id, donation.team.id)">队伍主页</button>
+          </div>
+        </div>
+        <div class="info">
+          <div>
+            <label>订单号</label>
+            <div><em>{{donation.order_id}}</em></div>
+          </div>
+          <div *ngIf="donation.participant">
+            <label>捐赠对象</label>
+            <div><em>{{donation.participant.name}}</em></div>
+          </div>
+          <div>
+            <label>所属活动</label>
+            <div><a (click)="gotoActivity(donation.activity.id)"><em>{{donation.activity.name}}</em></a></div>
+          </div>
+          <div *ngIf="donation.project">
+            <label>关联项目</label>
+            <div><a navPush="project-item" [navParams]="{id:donation.project.id}"><em>{{donation.project.name}}</em></a></div>
+          </div>
+          <div *ngIf="donation.success_time">
+            <label>支付时间</label>
+            <div><time>{{donation.success_time | date:'yyyy-MM-dd HH:mm:ss'}}</time></div>
+          </div>
+          <div>
+            <label>下单时间</label>
+            <div><time>{{donation.created_at | date:'yyyy-MM-dd HH:mm:ss'}}</time></div>
+          </div>
+        </div>
+        <div class="buttons">
+          <ng-container *ngIf="donation.status==0">
+            <button ion-button color="light" (click)="cancel(donation)">取消支付</button>
+            <button ion-button color="secondary" (click)="pay(donation)">立即支付</button>
+          </ng-container>
+          <ng-container *ngIf="donation.status==1">
+            <button ion-button color="secondary" navPush="apply-receipt" [navParams]="{id:donation.id}" *ngIf="donation.invoice==null">申请收据</button>
+            <button ion-button color="light" disabled *ngIf="donation.invoice==0">待处理</button>
+            <button ion-button color="light" disabled *ngIf="donation.invoice==1">已开票</button>
+          </ng-container>
+        </div>
+      </div>
+
+    </section>
+  </ng-container>
+
+  <empty-state [completed]="completed" *ngIf="!donation">
+    <p>未找到支付详情</p>
+  </empty-state>
+
+</ion-content>

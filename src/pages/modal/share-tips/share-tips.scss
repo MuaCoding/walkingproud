@@ -1,0 +1,34 @@
+page-share-tips {
+  padding: $content-gutter;
+  background-color: rgba(color($colors, dark), 0.9);
+
+  > div.icon {
+    text-align: right;
+
+    > img {
+      width: 50px;
+    }
+  }
+
+  > div.text {
+    @extend %blockCenter;
+
+    ul {
+      padding-left: $content-gutter-double;
+      color: #fff;
+      text-align: left;
+      list-style-type: decimal;
+
+      > li {
+        & + li {
+          margin-top: .5em;
+        }
+      }
+    }
+
+    button {
+      padding: 0 2em;
+      font-size: 1.4rem;
+    }
+  }
+}

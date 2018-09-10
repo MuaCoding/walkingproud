@@ -1,0 +1,42 @@
+<header>
+  <ion-toolbar>
+    <ion-title>统计信息</ion-title>
+  </ion-toolbar>
+</header>
+
+<section padding *ngIf="countInfo">
+  <p>
+    <label>累计参与次数</label>
+    <span float-right>
+      <strong>{{countInfo.count}}</strong> 次
+    </span>
+  </p>
+  <p>
+    <label>我的募捐总额</label>
+    <span float-right>
+      <strong>{{countInfo.money}}</strong> 元
+    </span>
+  </p>
+  <p>
+    <label>累计比赛行程</label>
+    <span float-right>
+      <strong>{{countInfo.mileage}}</strong> 公里
+    </span>
+  </p>
+  <!-- <p>
+    <label>我的总捐步数</label>
+    <span float-right>
+      <strong>{{countInfo.step}}</strong> 步
+    </span>
+  </p> -->
+</section>
+
+<empty-state [completed]="completed" middle *ngIf="!countInfo">
+  <p>暂无数据</p>
+</empty-state>
+
+<footer>
+  <ion-toolbar>
+    <button ion-button clear full (click)="dismiss()">确定</button>
+  </ion-toolbar>
+</footer>

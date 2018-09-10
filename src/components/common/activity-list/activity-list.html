@@ -1,0 +1,14 @@
+<ion-list>
+
+  <ion-item (click)="gotoActivity(item)" *ngFor="let item of data; trackBy: trackByFn;">
+    <div class="image">
+      <div><img [my-src]="item.picture"></div>
+    </div>
+    <h2>{{item.name}}</h2>
+    <p><em>{{item.type}}</em><span float-right>共<em>{{item.participator_count}}</em>人参加</span></p>
+    <span class="tag status-1" *ngIf="item.status==1"><ion-icon name="wp-brush"></ion-icon>报名中</span>
+    <span class="tag status-2" *ngIf="item.status==2"><ion-icon name="wp-flag"></ion-icon>进行中</span>
+    <span class="tag status-3" *ngIf="item.status==3"><ion-icon name="wp-delete"></ion-icon>已结束</span>
+  </ion-item>
+
+</ion-list>

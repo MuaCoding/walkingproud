@@ -1,0 +1,90 @@
+﻿<ion-content no-bounce>
+
+  <ion-refresher (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+
+  <ng-container *ngIf="userInfo">
+
+    <section>
+      <div class="user" padding>
+        <user-avatar [picture]="userInfo.avatar" [sex]="userInfo.sex"></user-avatar>
+        <h2>{{userInfo.nick_name}}</h2>
+      </div>
+    </section>
+
+    <section border>
+      <ion-grid class="statistics">
+        <ion-row>
+
+          <ion-col>
+            <div><strong>{{userInfo.money | number:'0.0-2'}}</strong>元</div>
+            <p>我的捐赠</p>
+          </ion-col>
+
+          <ion-col>
+            <div><strong>{{userInfo.count | number}}</strong>次</div>
+            <p>参与活动</p>
+          </ion-col>
+
+          <!-- <ion-col>
+            <div><strong>{{userInfo.step | number}}</strong>步</div>
+            <p>累计捐步</p>
+          </ion-col> -->
+
+        </ion-row>
+      </ion-grid>
+    </section>
+
+    <section margin-top-half>
+      <ion-list class="icons">
+
+        <ion-item navPush="user-info">
+          <ion-icon name="wp-businesscard"></ion-icon>
+          <h2>个人信息</h2>
+          <ion-note item-end>个人参赛信息</ion-note>
+        </ion-item>
+
+        <ion-item navPush="user-activity">
+          <ion-icon name="wp-flag-outline"></ion-icon>
+          <h2>我的活动</h2>
+          <ion-note item-end>管理参与的活动</ion-note>
+        </ion-item>
+
+        <ion-item navPush="invited-list">
+          <ion-icon name="wp-group"></ion-icon>
+          <h2>邀请入队</h2>
+          <ion-badge item-end *ngIf="userInfo.invite">{{userInfo.invite}}</ion-badge>
+        </ion-item>
+
+      </ion-list>
+    </section>
+
+    <section margin-top-half>
+      <ion-list class="icons">
+
+        <ion-item navPush="user-donation">
+          <ion-icon name="wp-stealth"></ion-icon>
+          <h2>支付记录</h2>
+          <ion-note item-end>支付记录以及详情</ion-note>
+        </ion-item>
+
+        <ion-item navPush="contact-us">
+          <ion-icon name="wp-customerservice"></ion-icon>
+          <h2>联系我们</h2>
+        </ion-item>
+
+      </ion-list>
+    </section>
+
+  </ng-container>
+
+  <ng-container *ngIf="!userInfo">
+
+    <empty-state [completed]="completed">
+      <p>无法获取个人信息</p>
+    </empty-state>
+
+  </ng-container>
+
+</ion-content>

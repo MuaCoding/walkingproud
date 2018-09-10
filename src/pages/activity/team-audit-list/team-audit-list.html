@@ -1,0 +1,34 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>申请列表</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+  <ion-refresher (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+
+  <ng-container *ngIf="result?.data">
+    <section border>
+      <member-list [data]="result.data" (selectedChange)="more($event)">
+        <ng-template #itemEnd let-item="item">
+          <button ion-button small (click.stop)="agree(item)" *ngIf="item.status==0">同意</button>
+          <ion-note *ngIf="item.status==1">已同意</ion-note>
+          <ion-note *ngIf="item.status==2">已拒绝</ion-note>
+        </ng-template>
+      </member-list>
+    </section>
+  </ng-container>
+
+  <empty-state [completed]="result?.completed" *ngIf="!(result?.data)">
+    <p>没有相关的申请记录</p>
+  </empty-state>
+
+  <ion-infinite-scroll (ionInfinite)="doInfinite($event)" [enabled]="result?.more">
+    <ion-infinite-scroll-content></ion-infinite-scroll-content>
+  </ion-infinite-scroll>
+</ion-content>

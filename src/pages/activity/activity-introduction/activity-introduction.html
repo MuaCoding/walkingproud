@@ -1,0 +1,34 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>活动介绍</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content #content>
+
+  <ng-container *ngIf="introduction">
+
+    <ion-toolbar fixed-scroll *ngIf="slides?.container">
+      <scroll-menus [slides]="slides" [index]="index"></scroll-menus>
+    </ion-toolbar>
+
+    <section border>
+      <ion-slides #slides class="slide-tabs" auto-height>
+
+        <ion-slide [title]="item.name" *ngFor="let item of introduction; trackBy: trackByFn;">
+          <div class="content" [innerHTML]="item.content | sanitizeHtml"></div>
+        </ion-slide>
+
+      </ion-slides>
+    </section>
+
+  </ng-container>
+
+  <empty-state [completed]="completed" *ngIf="!introduction">
+    <p>暂无活动介绍</p>
+  </empty-state>
+
+</ion-content>

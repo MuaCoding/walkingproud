@@ -1,0 +1,94 @@
+activity-countdown {
+  display: block;
+  position: relative;
+  padding-top: 30%;
+  background-color: #69bf0c;
+  font-size: 1.3rem;
+  color: #fff;
+  border-radius: 5px;
+  box-shadow: 0 3px 10px rgba(#69bf0c, 0.1);
+
+  &[style~='background-image:'] {
+    background: transparent no-repeat center center;
+    background-size: cover;
+    border-radius: 0;
+    box-shadow: none;
+  }
+
+  > div {
+    @extend %fullBlock;
+
+    display: flex;
+    padding: $content-gutter 0;
+    align-items: center;
+
+    > .countdown {
+      width: 125px;
+      padding: 0 $content-gutter;
+      text-align: center;
+      white-space: nowrap;
+
+      > ion-icon {
+        margin-bottom: $content-gutter-half;
+        font-size: 2.8rem;
+      }
+
+      > label {
+        display: block;
+      }
+
+      > p {
+        margin: 0;
+        margin-top: .5em;
+        line-height: 1;
+
+        > strong {
+          font-size: 4rem;
+          color: inherit;
+        }
+      }
+    }
+
+    > .info {
+      flex: 1;
+      position: relative;
+      padding: 0 $content-gutter;
+
+      &:before {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        width: $hairlines-width;
+        background-color: rgba(#fff, 0.8);
+        content: '';
+      }
+
+      > div {
+        display: flex;
+        line-height: 1;
+        align-items: center;
+
+        & + div {
+          margin-top: 1em;
+        }
+
+        > label {
+          overflow: hidden;
+          margin-right: .8em;
+          line-height: inherit;
+          white-space: nowrap;
+
+          @media screen and (max-width: 359px) {
+            width: 4em;
+          }
+        }
+
+        > time {
+          flex: 1;
+          text-align: right;
+        }
+      }
+    }
+  }
+}
